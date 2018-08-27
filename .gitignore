@@ -1,0 +1,8 @@
+.ropeproject
+*.py[oc]
+*.swp
+
+# Ignore compiled Qt assets
+*.qm
+gui/*.py
+!gui/__init__.py
