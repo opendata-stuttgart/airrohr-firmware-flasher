@@ -6,6 +6,7 @@ import time
 import tempfile
 import hashlib
 import zlib
+import logging
 
 import serial
 import serial.tools.list_ports
@@ -62,7 +63,8 @@ class QThread(QtCore.QThread):
         except Exception as exc:
             if self.error:
                 self.error.emit(str(exc))
-            raise
+            # raise here causes windows builds to just die. ¯\_(ツ)_/¯
+            logging.exception('Unhandled exception')
 
 
 class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
@@ -273,6 +275,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow(app=app)
     window.show()
