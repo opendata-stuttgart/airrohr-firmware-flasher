@@ -33,6 +33,11 @@ PREFERED_PORTS = [
 
 ROLE_DEVICE = QtCore.Qt.UserRole + 1
 
+if getattr(sys, 'frozen', False):
+    RESOURCES_PATH = sys._MEIPASS
+else:
+    RESOURCES_PATH = os.path.dirname(os.path.realpath(__file__))
+
 # FIXME move this into something like qtvariant.py
 QtCore.Signal = QtCore.pyqtSignal
 QtCore.Slot = QtCore.pyqtSlot
@@ -78,7 +83,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         # FIXME: dirty hack to solve relative paths in *.ui
         oldcwd = os.getcwd()
-        os.chdir('assets')
+        os.chdir(os.path.join(RESOURCES_PATH, 'assets'))
         self.setupUi(self)
         os.chdir(oldcwd)
 
@@ -110,7 +115,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         self.app.removeTranslator(self.translator)
         lang = QtCore.QLocale.languageToString(locale.language())
-        self.translator.load(os.path.join('i18n', lang + '.qm'))
+        self.translator.load(os.path.join(
+            RESOURCES_PATH, 'i18n', lang + '.qm'))
         self.app.installTranslator(self.translator)
         self.retranslateUi(self)
 
