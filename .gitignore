@@ -2,6 +2,9 @@
 *.py[oc]
 *.swp
 
+build/
+dist/
+
 # Ignore compiled Qt assets
 *.qm
 gui/*.py
