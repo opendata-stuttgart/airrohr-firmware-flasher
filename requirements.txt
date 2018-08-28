@@ -1,6 +1,11 @@
+certifi==2018.8.24
+chardet==3.0.4
 ecdsa==0.13
 esptool==2.5.0
+idna==2.7
 pyaes==1.6.1
 PyQt5==5.11.2
 PyQt5-sip==4.19.12
 pyserial==3.4
+requests==2.19.1
+urllib3==1.23
