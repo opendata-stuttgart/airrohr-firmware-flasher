@@ -74,6 +74,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
     def __init__(self, parent=None, app=None):
         super(MainWindow, self).__init__(parent)
+        self.setWindowFlags(QtCore.Qt.Dialog)
 
         # FIXME: dirty hack to solve relative paths in *.ui
         oldcwd = os.getcwd()
@@ -272,6 +273,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     @QtCore.Slot()
     def on_expertModeBox_clicked(self):
         self.expertForm.setVisible(self.expertModeBox.checkState())
+        self.centralwidget.setFixedHeight(self.centralwidget.sizeHint().height())
+        self.setFixedHeight(self.sizeHint().height())
 
 
 if __name__ == "__main__":
