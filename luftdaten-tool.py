@@ -246,8 +246,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         init_baud = min(ESPLoader.ESP_ROM_BAUD, baudrate)
         esp = ESPLoader.detect_chip(device, init_baud, 'default_reset', False)
 
-        progress.emit(self.tr('Done. Chip type: %s') %
-                      esp.get_chip_description(), 0)
+        progress.emit(self.tr('Connected. Chip type: {chip_type}').format(
+                      chip_type=esp.get_chip_description()), 0)
         esp = esp.run_stub()
         esp.change_baud(baudrate)
 
@@ -264,7 +264,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         t = time.time()
         while len(image) > 0:
             current_addr = address + seq * esp.FLASH_WRITE_SIZE
-            progress.emit(self.tr('Writing at 0x%08x...') % (current_addr,),
+            progress.emit(self.tr('Writing at 0x{address:08x}...').format(
+                          address=current_addr),
                           100 * (seq + 1) // blocks)
 
             block = image[0:esp.FLASH_WRITE_SIZE]
@@ -274,12 +275,15 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             written += len(block)
         t = time.time() - t
 
-        progress.emit(self.tr('Finished in %.2f seconds') % (t,), 100)
+        progress.emit(self.tr(
+            'Finished in {time:.2f} seconds. Sensor ID: {sensor_id}').format(
+                time=t, sensor_id=esp.chip_id()), 100)
 
     @QtCore.Slot()
     def on_expertModeBox_clicked(self):
         self.expertForm.setVisible(self.expertModeBox.checkState())
-        self.centralwidget.setFixedHeight(self.centralwidget.sizeHint().height())
+        self.centralwidget.setFixedHeight(
+            self.centralwidget.sizeHint().height())
         self.setFixedHeight(self.sizeHint().height())
 
 
