@@ -27,7 +27,7 @@ run: all
 	$(PY) luftdaten-tool.py
 
 dist: all
-	$(PY) -m PyInstaller luftdaten-tool.spec
+	$(PY) -m PyInstaller -y luftdaten-tool.spec
 
 deps:
 	$(PY) -m pip install -U -r requirements.txt
