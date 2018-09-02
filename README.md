@@ -7,16 +7,34 @@ Binary builds
 Our main target is having working prebuilt binaries for users to simply
 download and run, to avoid all the setup below.
 
+### Linux
+Currently Linux builds require *Python 3.6* (but 3.7 seems to work fine as
+well), GNU make and Qt Linguist tools. Following packages should suffice on
+Ubuntu:
+
+    sudo apt install qttools5-dev-tools python3.6 make
+
+Then, to install python dependencies and build the binary use:
+
+    make deps dist
+
 ### Windows
 
 Currently Windows builds require *Python 3.6* installed system-wide and added to
 `%PATH%`.
+
+To install python and cygwin dependencies and build everything use
+`windows-build.bat` batch script.
 
 ### MacOS
 Currently MacOS builds require *Python 3.6* and Qt SDK installed (just the "Qt >
 5... > macOS" part in installer) with following added to $PATH:
 
     export PATH="$HOME/Qt/5.11.1/clang_64/bin:$PATH"
+
+Then just install dependencies and build everything using:
+
+    make deps dist
 
 Development
 -----------

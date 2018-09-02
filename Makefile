@@ -5,6 +5,12 @@ PY_FILES = $(wildcard *.py) $(wildcard gui/*.py)
 UI_COMPILED = $(UI_FILES:.ui=.py)
 TS_COMPILED = $(TS_FILES:.ts=.qm)
 
+ifeq (, $(shell which python3))
+PY ?= python
+else
+PY ?= python3
+endif
+
 %.py: %.ui
 	pyuic5 $< > $@
 
@@ -18,10 +24,13 @@ clean:
 	rm $(TS_COMPILED)
 
 run: all
-	python3 luftdaten-tool.py
+	$(PY) luftdaten-tool.py
 
 dist: all
-	python3 -m PyInstaller luftdaten-tool.spec
+	$(PY) -m PyInstaller luftdaten-tool.spec
+
+deps:
+	$(PY) -m pip install -U -r requirements.txt
 
 i18n-update:
 	@for f in $(TS_FILES) ; do \
