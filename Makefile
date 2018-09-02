@@ -20,6 +20,9 @@ clean:
 run: all
 	python3 luftdaten-tool.py
 
+dist: all
+	python3 -m PyInstaller luftdaten-tool.spec
+
 i18n-update:
 	@for f in $(TS_FILES) ; do \
 		pylupdate5 *.py gui/*.py -ts $$f -verbose; \

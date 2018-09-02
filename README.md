@@ -7,6 +7,17 @@ Binary builds
 Our main target is having working prebuilt binaries for users to simply
 download and run, to avoid all the setup below.
 
+### Windows
+
+Currently Windows builds require *Python 3.6* installed system-wide and added to
+`%PATH%`.
+
+### MacOS
+Currently MacOS builds require *Python 3.6* and Qt SDK installed (just the "Qt >
+5... > macOS" part in installer) with following added to $PATH:
+
+    export PATH="$HOME/Qt/5.11.1/clang_64/bin:$PATH"
+
 Development
 -----------
 

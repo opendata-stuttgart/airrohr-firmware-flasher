@@ -27,3 +27,9 @@ exe = EXE(pyz,
           upx=True,
           runtime_tmpdir=None,
           console=False )
+
+# This is used on MacOS only
+app = BUNDLE(exe,
+             name='Luftdaten.info Flashing Tool.app',
+             icon=None,
+             bundle_identifier=None)
