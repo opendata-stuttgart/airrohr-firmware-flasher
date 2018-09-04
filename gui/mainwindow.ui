@@ -75,9 +75,6 @@
          <property name="editable">
           <bool>true</bool>
          </property>
-         <property name="currentText">
-          <string>master</string>
-         </property>
         </widget>
        </item>
        <item row="2" column="0" colspan="2">

@@ -135,6 +135,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         self.i18n_init(QtCore.QLocale.system())
 
+        self.statusbar.showMessage(self.tr("Loading firmware list..."))
         self.firmware_list = FirmwareListThread()
         self.firmware_list.onFirmware.connect(self.populate_versions)
         self.firmware_list.start()

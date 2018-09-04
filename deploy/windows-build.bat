@@ -1,4 +1,4 @@
-cd ..
+cd %~dp0\..
 
 if not exist build mkdir build
 
