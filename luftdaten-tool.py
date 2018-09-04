@@ -1,4 +1,5 @@
 # -* encoding: utf-8 *-
+
 import sys
 import os.path
 import re
@@ -51,12 +52,12 @@ def indexof(path):
     return [a for a, b in file_index_re.findall(resp.text) if a == b]
 
 
-class QThread(QtCore.QThread):
+class QuickThread(QtCore.QThread):
     """Provides similar API to threading.Thread but with additional error
     reporting based on Qt Signals"""
     def __init__(self, parent=None, target=None, args=None, kwargs=None,
                  error=None):
-        super(QThread, self).__init__(parent)
+        super(QuickThread, self).__init__(parent)
         self.target = target
         self.args = args or []
         self.kwargs = kwargs or {}
@@ -71,6 +72,48 @@ class QThread(QtCore.QThread):
             # raise here causes windows builds to just die. ¯\_(ツ)_/¯
             logging.exception('Unhandled exception')
 
+    @classmethod
+    def wrap(cls, func):
+        """Decorator that wraps function in a QThread. Calling resulting
+        function starts and creates QThread, with parent set to [self]"""
+        def wrapped(*args, **kwargs):
+            th = cls(parent=args[0], target=func, args=args, kwargs=kwargs,
+                     error=kwargs.pop('error', None))
+            func._th = th
+            th.start()
+
+            return th
+
+        wrapped.running = lambda: (hasattr(func, '_th') and
+                                   func._th.isRunning())
+        return wrapped
+
+
+class PortDetectThread(QtCore.QThread):
+    interval = 1.0
+    portsUpdate = QtCore.Signal([list])
+
+    def run(self):
+        """Checks list of available ports and emits signal when necessary"""
+
+        ports = []
+        while True:
+            new_ports = serial.tools.list_ports.comports()
+
+            if [p.name for p in ports] != [p.name for p in new_ports]:
+                self.portsUpdate.emit(new_ports)
+
+            time.sleep(self.interval)
+
+            ports = new_ports
+
+
+class FirmwareListThread(QtCore.QThread):
+    onFirmware = QtCore.Signal([list])
+
+    def run(self):
+        """Downloads list of available firmware updates in separate thread."""
+        self.onFirmware.emit(list(indexof(UPDATE_REPOSITORY)))
 
 class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     signal = QtCore.Signal([str, int])
@@ -92,9 +135,13 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         self.i18n_init(QtCore.QLocale.system())
 
-        # TODO: extract this to separate thread
-        self.populate_versions()
-        self.populate_boards(serial.tools.list_ports.comports())
+        self.firmware_list = FirmwareListThread()
+        self.firmware_list.onFirmware.connect(self.populate_versions)
+        self.firmware_list.start()
+
+        self.port_detect = PortDetectThread()
+        self.port_detect.portsUpdate.connect(self.populate_boards)
+        self.port_detect.start()
 
         self.on_expertModeBox_clicked()
 
@@ -120,10 +167,10 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.app.installTranslator(self.translator)
         self.retranslateUi(self)
 
-    def populate_versions(self):
+    def populate_versions(self, files):
         """Loads available firmware versions into versionbox widget"""
 
-        for fname in indexof(UPDATE_REPOSITORY):
+        for fname in files:
             if not fname.endswith('.bin'):
                 continue
 
@@ -131,9 +178,13 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             item.setData(UPDATE_REPOSITORY + fname, ROLE_DEVICE)
             self.versionBox.model().appendRow(item)
 
+        self.statusbar.clearMessage()
+
     def populate_boards(self, ports):
         """Populates board selection combobox from list of pyserial
         ListPortInfo objects"""
+
+        self.boardBox.clear()
 
         prefered, others = self.group_ports(ports)
 
@@ -201,13 +252,12 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
                 "Invalid version / file does not exist"))
             return
 
-        if self.uploadThread and self.uploadThread.isRunning():
+        if self.flash_board.running():
             self.statusbar.showMessage(self.tr("Work in progess..."))
             return
 
-        self.uploadThread = QThread(self, self.flash_board, [
-            self.signal, device, binary_uri], error=self.errorSignal)
-        self.uploadThread.start()
+        self.flash_board(self.signal, device, binary_uri,
+                         error=self.errorSignal)
 
     def cache_download(self, progress, binary_uri):
         """Downloads and caches file with status reports via Qt Signals"""
@@ -235,6 +285,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         return cache_fname
 
+    @QuickThread.wrap
     def flash_board(self, progress, device, binary_uri, baudrate=460800):
         if binary_uri.startswith(ALLOWED_PROTO):
             binary_uri = self.cache_download(progress, binary_uri)
