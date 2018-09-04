@@ -24,7 +24,7 @@ Currently Windows builds require *Python 3.6* installed system-wide and added to
 `%PATH%`.
 
 To install python and cygwin dependencies and build everything use
-`windows-build.bat` batch script.
+`deploy\windows-build.bat` batch script.
 
 ### MacOS
 Currently MacOS builds require *Python 3.6* and Qt SDK installed (just the "Qt >
@@ -34,7 +34,7 @@ Currently MacOS builds require *Python 3.6* and Qt SDK installed (just the "Qt >
 
 Then just install dependencies and build everything using:
 
-    make deps dist
+    make deps dmg
 
 Development
 -----------

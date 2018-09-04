@@ -1,3 +1,5 @@
+cd ..
+
 if not exist build mkdir build
 
 rem Download cygwin installer
