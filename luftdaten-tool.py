@@ -2,121 +2,33 @@
 
 import sys
 import os.path
-import re
 import time
 import tempfile
 import hashlib
 import zlib
 import logging
 
-import serial
-import serial.tools.list_ports
 import requests
 from esptool import ESPLoader
-from PyQt5 import QtGui, QtCore, QtWidgets
+
+from luftdatentool.qtvariant import QtGui, QtCore, QtWidgets
+from luftdatentool.utils import QuickThread
+from luftdatentool.workers import PortDetectThread, FirmwareListThread, \
+    ZeroconfDiscoveryThread
 
 from gui import mainwindow
 
-# Firmware update repository
-UPDATE_REPOSITORY = 'https://www.madavi.de/sensor/update/data/'
-
-# URI prefixes (protocol parts, essentially) to be downloaded using requests
-ALLOWED_PROTO = ('http://', 'https://')
-
-# vid/pid pairs of known NodeMCU/ESP8266 development boards
-PREFERED_PORTS = [
-    # CH341
-    (0x1A86, 0x7523),
-
-    # CP2102
-    (0x10c4, 0xea60),
-]
-
-ROLE_DEVICE = QtCore.Qt.UserRole + 1
+from luftdatentool.consts import UPDATE_REPOSITORY, ALLOWED_PROTO, \
+    PREFERED_PORTS, ROLE_DEVICE
 
 if getattr(sys, 'frozen', False):
     RESOURCES_PATH = sys._MEIPASS
 else:
     RESOURCES_PATH = os.path.dirname(os.path.realpath(__file__))
 
-# FIXME move this into something like qtvariant.py
-QtCore.Signal = QtCore.pyqtSignal
-QtCore.Slot = QtCore.pyqtSlot
-
-file_index_re = re.compile(r'<a href="([^"]*)">([^<]*)</a>')
-
-
-def indexof(path):
-    """Returns list of filenames parsed off "Index of" page"""
-    resp = requests.get(path)
-    return [a for a, b in file_index_re.findall(resp.text) if a == b]
-
-
-class QuickThread(QtCore.QThread):
-    """Provides similar API to threading.Thread but with additional error
-    reporting based on Qt Signals"""
-    def __init__(self, parent=None, target=None, args=None, kwargs=None,
-                 error=None):
-        super(QuickThread, self).__init__(parent)
-        self.target = target
-        self.args = args or []
-        self.kwargs = kwargs or {}
-        self.error = error
-
-    def run(self):
-        try:
-            self.target(*self.args, **self.kwargs)
-        except Exception as exc:
-            if self.error:
-                self.error.emit(str(exc))
-            # raise here causes windows builds to just die. ¯\_(ツ)_/¯
-            logging.exception('Unhandled exception')
-
-    @classmethod
-    def wrap(cls, func):
-        """Decorator that wraps function in a QThread. Calling resulting
-        function starts and creates QThread, with parent set to [self]"""
-        def wrapped(*args, **kwargs):
-            th = cls(parent=args[0], target=func, args=args, kwargs=kwargs,
-                     error=kwargs.pop('error', None))
-            func._th = th
-            th.start()
-
-            return th
-
-        wrapped.running = lambda: (hasattr(func, '_th') and
-                                   func._th.isRunning())
-        return wrapped
-
-
-class PortDetectThread(QtCore.QThread):
-    interval = 1.0
-    portsUpdate = QtCore.Signal([list])
-
-    def run(self):
-        """Checks list of available ports and emits signal when necessary"""
-
-        ports = []
-        while True:
-            new_ports = serial.tools.list_ports.comports()
-
-            if [p.name for p in ports] != [p.name for p in new_ports]:
-                self.portsUpdate.emit(new_ports)
-
-            time.sleep(self.interval)
-
-            ports = new_ports
-
-
-class FirmwareListThread(QtCore.QThread):
-    onFirmware = QtCore.Signal([list])
-
-    def run(self):
-        """Downloads list of available firmware updates in separate thread."""
-        self.onFirmware.emit(list(indexof(UPDATE_REPOSITORY)))
 
 class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
-    signal = QtCore.Signal([str, int])
+    uploadProgress = QtCore.Signal([str, int])
     errorSignal = QtCore.Signal([str])
     uploadThread = None
 
@@ -136,17 +48,20 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.i18n_init(QtCore.QLocale.system())
 
         self.statusbar.showMessage(self.tr("Loading firmware list..."))
+
         self.firmware_list = FirmwareListThread()
-        self.firmware_list.onFirmware.connect(self.populate_versions)
+        self.firmware_list.listLoaded.connect(self.populate_versions)
+        self.firmware_list.error.connect(self.on_work_error)
         self.firmware_list.start()
 
         self.port_detect = PortDetectThread()
         self.port_detect.portsUpdate.connect(self.populate_boards)
+        self.port_detect.error.connect(self.on_work_error)
         self.port_detect.start()
 
         self.on_expertModeBox_clicked()
 
-        self.signal.connect(self.on_work_update)
+        self.uploadProgress.connect(self.on_work_update)
         self.errorSignal.connect(self.on_work_error)
 
         self.cachedir = tempfile.TemporaryDirectory()
@@ -257,7 +172,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             self.statusbar.showMessage(self.tr("Work in progess..."))
             return
 
-        self.flash_board(self.signal, device, binary_uri,
+        self.flash_board(self.uploadProgress, device, binary_uri,
                          error=self.errorSignal)
 
     def cache_download(self, progress, binary_uri):
@@ -290,8 +205,6 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     def flash_board(self, progress, device, binary_uri, baudrate=460800):
         if binary_uri.startswith(ALLOWED_PROTO):
             binary_uri = self.cache_download(progress, binary_uri)
-
-        print(binary_uri)
 
         progress.emit(self.tr('Connecting...'), 0)
 
