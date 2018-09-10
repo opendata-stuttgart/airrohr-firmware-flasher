@@ -59,6 +59,11 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.port_detect.error.connect(self.on_work_error)
         self.port_detect.start()
 
+        self.zeroconf_discovery = ZeroconfDiscoveryThread()
+        self.zeroconf_discovery.deviceDiscovered.connect(
+            self.on_zeroconf_discovered)
+        self.zeroconf_discovery.start()
+
         self.on_expertModeBox_clicked()
 
         self.uploadProgress.connect(self.on_work_update)
@@ -72,6 +77,17 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
     def on_work_error(self, message):
         self.statusbar.showMessage(message)
+
+    def on_zeroconf_discovered(self, name, address, info):
+        """Called on every zeroconf discovered device"""
+        if name.startswith('Feinstaubsensor'):
+            item = QtWidgets.QListWidgetItem('{}: {}'.format(address, name.split('.')[0]))
+            item.setData(ROLE_DEVICE, 'http://{}:{}'.format(address, info.port))
+            self.listWidget.addItem(item)
+
+    @QtCore.Slot(QtWidgets.QListWidgetItem)
+    def on_listWidget_itemDoubleClicked(self, index):
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl(index.data(ROLE_DEVICE)))
 
     def i18n_init(self, locale):
         """Initializes i18n to specified QLocale"""
