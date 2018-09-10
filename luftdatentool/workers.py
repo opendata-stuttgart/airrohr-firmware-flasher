@@ -39,10 +39,13 @@ class FirmwareListThread(QuickThread):
 
 class ZeroconfDiscoveryThread(QuickThread):
     deviceDiscovered = QtCore.Signal(str, str, object)
+    browser = None
 
     def target(self):
-        zc = zeroconf.Zeroconf()
-        browser = zeroconf.ServiceBrowser(zc, "_http._tcp.local.",
+        """This thread scans for Bonjour/mDNS devices and emits
+        deviceDiscovered signal with its name, address and info object"""
+        self.zc = zeroconf.Zeroconf()
+        self.browser = zeroconf.ServiceBrowser(self.zc, "_http._tcp.local.",
                                           handlers=[self.on_state_change])
         while True:
             time.sleep(0.5)
@@ -51,3 +54,7 @@ class ZeroconfDiscoveryThread(QuickThread):
         info = zeroconf.get_service_info(service_type, name)
         if info:
             self.deviceDiscovered.emit(name, socket.inet_ntoa(info.address), info)
+
+    def stop(self):
+        if self.browser:
+            self.browser.cancel()

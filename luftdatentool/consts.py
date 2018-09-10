@@ -1,4 +1,7 @@
+import sys
+
 from .qtvariant import QtCore
+
 
 # Firmware update repository
 UPDATE_REPOSITORY = 'https://www.madavi.de/sensor/update/data/'
@@ -16,3 +19,10 @@ PREFERED_PORTS = [
 ]
 
 ROLE_DEVICE = QtCore.Qt.UserRole + 1
+
+if sys.platform.startswith('darwin'):
+    DRIVERS_URL = 'http://www.wch.cn/downloads/CH341SER_MAC_ZIP.html'
+elif sys.platform.startswith(('cygwin', 'win32')):
+    DRIVERS_URL = 'http://www.wch.cn/downloads/CH341SER_ZIP.html'
+else:
+    DRIVERS_URL = None

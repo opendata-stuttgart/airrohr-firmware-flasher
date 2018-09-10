@@ -19,7 +19,7 @@ from luftdatentool.workers import PortDetectThread, FirmwareListThread, \
 from gui import mainwindow
 
 from luftdatentool.consts import UPDATE_REPOSITORY, ALLOWED_PROTO, \
-    PREFERED_PORTS, ROLE_DEVICE
+    PREFERED_PORTS, ROLE_DEVICE, DRIVERS_URL
 
 if getattr(sys, 'frozen', False):
     RESOURCES_PATH = sys._MEIPASS
@@ -31,6 +31,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     uploadProgress = QtCore.Signal([str, int])
     errorSignal = QtCore.Signal([str])
     uploadThread = None
+    zeroconf_discovery = None
+    boards_detected = False
 
     def __init__(self, parent=None, app=None):
         super(MainWindow, self).__init__(parent)
@@ -43,8 +45,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         os.chdir(oldcwd)
 
         self.app = app
-        self.translator = QtCore.QTranslator()
 
+        self.translator = QtCore.QTranslator()
         self.i18n_init(QtCore.QLocale.system())
 
         self.statusbar.showMessage(self.tr("Loading firmware list..."))
@@ -59,17 +61,24 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.port_detect.error.connect(self.on_work_error)
         self.port_detect.start()
 
-        self.zeroconf_discovery = ZeroconfDiscoveryThread()
-        self.zeroconf_discovery.deviceDiscovered.connect(
-            self.on_zeroconf_discovered)
-        self.zeroconf_discovery.start()
+        self.discovery_start()
 
+        self.globalMessage.hide()
+
+        # Hide WIP GUI parts...
         self.on_expertModeBox_clicked()
+        self.expertModeBox.hide()
+        self.tabWidget.removeTab(self.tabWidget.indexOf(self.serialTab))
 
         self.uploadProgress.connect(self.on_work_update)
         self.errorSignal.connect(self.on_work_error)
 
         self.cachedir = tempfile.TemporaryDirectory()
+
+    def show_global_message(self, title, message):
+        self.globalMessage.show()
+        self.globalMessageTitle.setText(title)
+        self.globalMessageText.setText(message)
 
     def on_work_update(self, status, progress):
         self.statusbar.showMessage(status)
@@ -77,17 +86,6 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
     def on_work_error(self, message):
         self.statusbar.showMessage(message)
-
-    def on_zeroconf_discovered(self, name, address, info):
-        """Called on every zeroconf discovered device"""
-        if name.startswith('Feinstaubsensor'):
-            item = QtWidgets.QListWidgetItem('{}: {}'.format(address, name.split('.')[0]))
-            item.setData(ROLE_DEVICE, 'http://{}:{}'.format(address, info.port))
-            self.listWidget.addItem(item)
-
-    @QtCore.Slot(QtWidgets.QListWidgetItem)
-    def on_listWidget_itemDoubleClicked(self, index):
-        QtGui.QDesktopServices.openUrl(QtCore.QUrl(index.data(ROLE_DEVICE)))
 
     def i18n_init(self, locale):
         """Initializes i18n to specified QLocale"""
@@ -130,6 +128,17 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             sep = QtGui.QStandardItem(self.tr('No boards found'))
             sep.setEnabled(False)
             self.boardBox.model().appendRow(sep)
+
+            # No prefered boards has been found so far and there is a
+            # suggested driver download URL available
+            if not self.boards_detected and DRIVERS_URL:
+                self.show_global_message(
+                    self.tr('No boards found'),
+                    self.tr('Have you installed <a href="{drivers_url}">'
+                            'the drivers</a>?').format(drivers_url=DRIVERS_URL))
+        else:
+            self.globalMessage.hide()
+            self.boards_detected = True
 
         if others:
             sep = QtGui.QStandardItem(self.tr('Others...'))
@@ -263,9 +272,36 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     @QtCore.Slot()
     def on_expertModeBox_clicked(self):
         self.expertForm.setVisible(self.expertModeBox.checkState())
-        self.centralwidget.setFixedHeight(
-            self.centralwidget.sizeHint().height())
-        self.setFixedHeight(self.sizeHint().height())
+        #self.centralwidget.setFixedHeight(
+        #    self.centralwidget.sizeHint().height())
+        #self.setFixedHeight(self.sizeHint().height())
+
+    # Zeroconf page
+    def discovery_start(self):
+        if self.zeroconf_discovery:
+            self.zeroconf_discovery.stop()
+
+        self.zeroconf_discovery = ZeroconfDiscoveryThread()
+        self.zeroconf_discovery.deviceDiscovered.connect(
+            self.on_zeroconf_discovered)
+        self.zeroconf_discovery.start()
+
+
+    def on_zeroconf_discovered(self, name, address, info):
+        """Called on every zeroconf discovered device"""
+        if name.startswith('Feinstaubsensor'):
+            item = QtWidgets.QListWidgetItem('{}: {}'.format(address, name.split('.')[0]))
+            item.setData(ROLE_DEVICE, 'http://{}:{}'.format(address, info.port))
+            self.discoveryList.addItem(item)
+
+    @QtCore.Slot(QtWidgets.QListWidgetItem)
+    def on_discoveryList_itemDoubleClicked(self, index):
+        QtGui.QDesktopServices.openUrl(QtCore.QUrl(index.data(ROLE_DEVICE)))
+
+    @QtCore.Slot()
+    def on_discoveryRefreshButton_clicked(self):
+        self.discoveryList.clear()
+        self.discovery_start()
 
 
 if __name__ == "__main__":
