@@ -17,11 +17,11 @@ class PortDetectThread(QuickThread):
     def target(self):
         """Checks list of available ports and emits signal when necessary"""
 
-        ports = []
+        ports = None
         while True:
             new_ports = serial.tools.list_ports.comports()
 
-            if [p.name for p in ports] != [p.name for p in new_ports]:
+            if ports is None or [p.name for p in ports] != [p.name for p in new_ports]:
                 self.portsUpdate.emit(new_ports)
 
             time.sleep(self.interval)
