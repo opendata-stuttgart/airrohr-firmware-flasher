@@ -11,6 +11,7 @@ import logging
 import requests
 from esptool import ESPLoader
 
+import luftdatentool
 from luftdatentool.qtvariant import QtGui, QtCore, QtWidgets
 from luftdatentool.utils import QuickThread
 from luftdatentool.workers import PortDetectThread, FirmwareListThread, \
@@ -87,6 +88,21 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     def on_work_error(self, message):
         self.statusbar.showMessage(message)
 
+    @property
+    def version(self):
+        return luftdatentool.__version__
+
+    @property
+    def build_id(self):
+        try:
+            from luftdatentool._buildid import commit, builddate
+        except ImportError:
+            import datetime
+            commit = 'devel'
+            builddate = datetime.datetime.now().strftime('%Y%m%d')
+
+        return '{}-{}/{}'.format(self.version, commit, builddate)
+
     def i18n_init(self, locale):
         """Initializes i18n to specified QLocale"""
 
@@ -97,6 +113,13 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.app.installTranslator(self.translator)
         self.retranslateUi(self)
 
+    def retranslateUi(self, win):
+        super(MainWindow, self).retranslateUi(win)
+
+        win.setWindowTitle(win.windowTitle().format(
+            version=self.version))
+        win.buildLabel.setText(win.buildLabel.text().format(
+            build_id=self.build_id))
     def populate_versions(self, files):
         """Loads available firmware versions into versionbox widget"""
 

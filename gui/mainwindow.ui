@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Luftdaten.info Flashing Tool</string>
+   <string>Luftdaten.info Flashing Tool (v{version})</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -279,6 +279,19 @@
         <property name="spacing">
          <number>12</number>
         </property>
+        <item row="1" column="1">
+         <widget class="QLabel" name="buildLabel">
+          <property name="font">
+           <font>
+            <weight>50</weight>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;b&gt;Luftdaten.info Flashing Tool&lt;/b&gt;&lt;br/&gt;Build {build_id}</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_6">
           <property name="maximumSize">
@@ -295,19 +308,6 @@
           </property>
           <property name="scaledContents">
            <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="label_7">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Luftdaten.info Flashing Tool</string>
           </property>
          </widget>
         </item>
