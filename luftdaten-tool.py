@@ -52,6 +52,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         self.statusbar.showMessage(self.tr("Loading firmware list..."))
 
+        self.versionBox.clear()
         self.firmware_list = FirmwareListThread()
         self.firmware_list.listLoaded.connect(self.populate_versions)
         self.firmware_list.error.connect(self.on_work_error)
@@ -200,8 +201,12 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             self.statusbar.showMessage(self.tr("No version selected."))
             return
 
-        orig_version = self.versionBox.model().item(
-            self.versionBox.currentIndex()).text()
+        sel =  self.versionBox.model().item(
+            self.versionBox.currentIndex())
+        if sel:
+            orig_version = sel.text()
+        else:
+            orig_version = ''
 
         if version == orig_version:
             # Editable combobox has been unchanged
