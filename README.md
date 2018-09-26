@@ -27,10 +27,11 @@ To install python and cygwin dependencies and build everything use
 `deploy\windows-build.bat` batch script.
 
 ### MacOS
-Currently MacOS builds require *Python 3.6* and Qt SDK installed (just the "Qt >
+Currently MacOS builds require *Python 3.6*, `dmgbuild` tool (`pip3 install
+dmgbuild`) and Qt SDK installed (just the "Qt >
 5... > macOS" part in installer) with following added to $PATH:
 
-    export PATH="$HOME/Qt/5.11.1/clang_64/bin:$PATH"
+    export PATH="$HOME/Qt/5.11.1/clang_64/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
 
 Then just install dependencies and build everything using:
 
