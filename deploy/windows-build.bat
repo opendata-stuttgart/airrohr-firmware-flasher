@@ -3,7 +3,7 @@ cd %~dp0\..
 if not exist build mkdir build
 
 rem Download cygwin installer
-if not exist build\cygwin-x86.exe powershell -Command "Invoke-WebRequest https://cygwin.com/setup-x86.exe -OutFile build\cygwin-x86.exe"
+if not exist build\cygwin-x86.exe powershell -Command "(new-object System.Net.WebClient).DownloadFile('https://cygwin.com/setup-x86.exe', 'build\cygwin-x86.exe')"
 
 rem Install required Cygwin packages
 if not exist build\cygwin build\cygwin-x86.exe --site http://cygwin.mirror.constant.com ^
