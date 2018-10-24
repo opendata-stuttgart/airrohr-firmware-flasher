@@ -9,7 +9,7 @@ macholib==1.11
 netifaces==0.10.7
 pefile==2018.8.8
 pyaes==1.6.1
-https://github.com/pyinstaller/pyinstaller/archive/bbf964c6b89ca33823031fa7ed277c0269192b3e.zip#egg=PyInstaller
+PyInstaller==3.4
 PyQt5==5.11.2
 PyQt5-sip==4.19.12
 pyserial==3.4
