@@ -2,6 +2,13 @@ cd %~dp0\..
 
 if not exist build mkdir build
 
+rem Download python installer
+if not exist build\python-installer.exe powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; (new-object System.Net.WebClient).DownloadFile('https://www.python.org/ftp/python/3.6.7/python-3.6.7-amd64.exe', 'build\python-installer.exe')"
+if not exist %LocalAppData%\Programs\Python\Python36 build\python-installer.exe InstallAllUsers=0 Include_launcher=0 Include_test=0 /passive
+
+rem PATH is only reloaded on reboot/login, so we need to force it here
+set PATH=%LocalAppData%\Programs\Python\Python36\;%PATH%
+
 rem Download cygwin installer
 if not exist build\cygwin-x86.exe powershell -Command "(new-object System.Net.WebClient).DownloadFile('https://cygwin.com/setup-x86.exe', 'build\cygwin-x86.exe')"
 
