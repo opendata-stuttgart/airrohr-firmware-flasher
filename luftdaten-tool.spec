@@ -5,7 +5,14 @@ block_cipher = None
 import subprocess
 import datetime
 
-commit = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD']).strip().decode('utf-8')
+commit = 'devel'
+
+try:
+    commit = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD']).strip().decode('utf-8')
+except Exception as exc:
+    print("Can't extract git head, will use a dummy commit ID.")
+    print(exc)
+
 builddate = datetime.datetime.now().strftime('%Y%m%d')
 
 with open('luftdatentool/_buildid.py', 'w') as fd:
