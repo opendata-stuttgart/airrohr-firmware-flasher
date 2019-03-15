@@ -13,7 +13,7 @@ PY ?= python3
 endif
 
 %.py: %.ui
-	pyuic5 $< > $@
+	pyuic5 $< -o $@
 
 %.qm: %.ts
 	lrelease $<
