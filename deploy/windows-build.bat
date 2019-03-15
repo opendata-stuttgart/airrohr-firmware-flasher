@@ -7,7 +7,7 @@ if not exist build\python-installer.exe powershell -Command "[Net.ServicePointMa
 if not exist %LocalAppData%\Programs\Python\Python36 build\python-installer.exe InstallAllUsers=0 Include_launcher=0 Include_test=0 /passive
 
 rem PATH is only reloaded on reboot/login, so we need to force it here
-set PATH=%LocalAppData%\Programs\Python\Python36\;%PATH%
+set PATH=%LocalAppData%\Programs\Python\Python36\;%LocalAppData%\Programs\Python\Python36\Scripts\;%PATH%
 
 rem Download cygwin installer
 if not exist build\cygwin-x86.exe powershell -Command "(new-object System.Net.WebClient).DownloadFile('https://cygwin.com/setup-x86.exe', 'build\cygwin-x86.exe')"
