@@ -37,6 +37,14 @@ Then just install dependencies and build everything using:
 
     make deps dmg
 
+### Binary build debugging
+
+In case an error occurs in early stages of application startup, user will be
+presented with a "Failed to execute script luftdaten-tool.exe" message. In order
+to see actual source of that error, `console` flag in `luftdaten-tool.spec` can
+be switched to `True`. In Windows this will make application output a proper
+stack trace to `cmd` popup.
+
 Development
 -----------
 
