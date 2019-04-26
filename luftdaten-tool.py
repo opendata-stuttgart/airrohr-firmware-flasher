@@ -9,7 +9,7 @@ import zlib
 import logging
 
 import requests
-from esptool import ESPLoader
+from esptool import ESPLoader, erase_flash
 
 import luftdatentool
 from luftdatentool.qtvariant import QtGui, QtCore, QtWidgets
@@ -254,6 +254,36 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         return cache_fname
 
+    @QuickThread.wrap
+    def erase_board(self, progress, device, baudrate=460800):
+
+        progress.emit(self.tr('Connecting...'), 0)
+        init_baud = min(ESPLoader.ESP_ROM_BAUD, baudrate)
+        esp = ESPLoader.detect_chip(device, init_baud, 'default_reset', False)
+
+        progress.emit(self.tr('Connected. Chip type: {chip_type}').format(
+                      chip_type=esp.get_chip_description()), 0)
+        esp = esp.run_stub()
+        esp.change_baud(baudrate)        
+        esp.erase_flash()
+        progress.emit(self.tr('Erasing complete!'), 100)
+        
+    @QtCore.Slot()
+    def on_eraseButton_clicked(self):
+        self.statusbar.clearMessage()
+        device = self.boardBox.currentData(ROLE_DEVICE)
+
+        if not device:
+            self.statusbar.showMessage(self.tr("No device selected."))
+            return
+
+        if self.erase_board.running():
+            self.statusbar.showMessage(self.tr("Erasing in progress..."))
+            return
+
+        self.erase_board(self.uploadProgress, device,
+                         error=self.errorSignal)
+                        
     @QuickThread.wrap
     def flash_board(self, progress, device, binary_uri, baudrate=460800):
         if binary_uri.startswith(ALLOWED_PROTO):
