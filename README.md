@@ -68,7 +68,7 @@ If you want to build in a python virtualenv (recommended) you should create one 
 
     mkvirtualenv -p "$(which python3)" airrohr-firmware-flasher
     # deactivate # to leave the virtualenv later
-    # workon airrohr-firmware-flasher to re-enter virtualenv
+    # workon airrohr-firmware-flasher # to re-enter virtualenv
 
 Then, to install python dependencies and build the binary use:
 
