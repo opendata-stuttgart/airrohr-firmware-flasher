@@ -48,9 +48,9 @@ If you want to delete/reset all settings on the device (e.g. the Wifi credential
 
 Now your device is flashed, you may now 
 
-#. connect the sensors to it, 
-#. configure the WiFi (connect your computer/smartphone to the AP `feinstaubsensor-<sensorID>` and open up http://192.168.4.1/ in a browser) and 
-#. finally register the sensor at https://meine.luftdaten.info/ with your *Sensor ID*
+1. connect the sensors to it, 
+2. configure the WiFi (connect your computer/smartphone to the AP `feinstaubsensor-<sensorID>` and open up http://192.168.4.1/ in a browser) and 
+3. finally register the sensor at https://meine.luftdaten.info/ with your *Sensor ID*
 
 
 
