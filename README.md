@@ -39,9 +39,9 @@ If you want to delete/reset all settings on the device (e.g. the Wifi credential
 
 ![Select the firmware](images/airrohr-flasher_select_firmware.png)
 
-![Flasing is finished, take a note of the sensor ID (here: 13596333)](images/airrohr-flasher_flash_finished.png)
+![The upload button starts the flashing procedure](images/airrohr-flasher_flash_progress.png "The upload button starts the flashing procedure")
 
-![The upload button starts the flashing procedure](images/airrohr-flasher_flash_progress.png)
+![Flashing is finished, take a note of the sensor ID (here: 1596171)](images/airrohr-flasher_flash_finished.png "Flashing is finished, take a note of the sensor ID (here: 1596171)")
 
 
 ### Further steps
@@ -64,17 +64,9 @@ Ubuntu:
 
     sudo apt install qttools5-dev-tools python3.6 make
 
-If you want to build in a python virtualenv (recommended) you should create one with
-
-    mkvirtualenv -p "$(which python3)" airrohr-firmware-flasher
-    # deactivate # to leave the virtualenv later
-    # workon airrohr-firmware-flasher to re-enter virtualenv
-
 Then, to install python dependencies and build the binary use:
 
     make deps dist
-
-The built binary will be `dist/luftdaten-tool`.
 
 ### Windows
 
