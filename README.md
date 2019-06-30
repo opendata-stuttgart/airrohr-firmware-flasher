@@ -1,13 +1,63 @@
-luftdaten.info flashing tool
-============================
+# luftdaten.info flashing tool
 
-Binary builds
--------------
+## Binary builds and downloads
 
-Our main target is having working prebuilt binaries for users to simply
-download and run, to avoid all the setup below.
+Our main target is having working prebuilt binaries for users to simply download and run, to avoid all the setup below.
+See [releases](https://github.com/opendata-stuttgart/airrohr-firmware-flasher/releases) to download the software for your system.
+
+Note: you need drivers for the USB2serial chipset:
+
+* Drivers for NodeMCU v3 (CH340)
+
+    * [Windows](http://www.wch.cn/downloads/file/5.html) (Windows 10 should be able to automatically download these; [2018/09/04 v3.4 mirror](https://d.inf.re/luftdaten/CH341SER.ZIP))
+    * [MacOS](http://www.wch.cn/downloads/file/178.html) ([2018/09/04 v1.4 mirror](https://d.inf.re/luftdaten/CH341SER_MAC.ZIP))
+
+* Drivers for NodeMCU v2 ([CP2102](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers))
+
+    * [Windows 10](https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip), [Windows 7/8/8.1](https://www.silabs.com/documents/public/software/CP210x_Windows_Drivers.zip) (Windows 10 should be able to automatically download these)
+    * [MacOS](https://www.silabs.com/documents/public/software/Mac_OSX_VCP_Driver.zip)
+
+On Linux you should not need drivers, as they are usually already there, but you need to check that you as user have the permission to use the serial devices (otherwise you likely see an error like *serial.serialutil.SerialException: [Errno 13] could not open port /dev/ttyUSB0: [Errno 13] Permission denied: '/dev/ttyUSB0'*). 
+
+* Debian/Ubuntu: add your user to the group `dialout` with `sudo usermod -a -G dialout ${USER}` (you may need to restart the desktop to apply your new group settings).
+
+## Using the software
+
+To flash a device:
+
+#. connect the ESP8266 with a USB cable to your computer (micro-USB)
+#. launch the downloaded software
+#. check/select the serial device
+#. select the firmware (`latest_<COUNTRYCODE>.bin` should be fine for any setup)
+#. press button *Upload*
+#. wait for a few seconds to finish the flashing procedure
+#. take a note of the **Sensor ID** written in the Window status bar at the bottom - you will need it to register the sensor
+
+If you want to delete/reset all settings on the device (e.g. the Wifi credentials) you can use the `Erase Flash` button (exists in software version 0.2.2 and above).
+
+### Screenshots
+
+![Select the firmware](images/airrohr-flasher_select_firmware.png)
+
+![Flasing is finished, take a note of the sensor ID (here: 13596333)](images/airrohr-flasher_flash_finished.png)
+
+![The upload button starts the flashing procedure](images/airrohr-flasher_flash_progress.png)
+
+
+### Further steps
+
+Now your device is flashed, you may now 
+
+#. connect the sensors to it, 
+#. configure the WiFi (connect your computer/smartphone to the AP `feinstaubsensor-<sensorID>` and open up http://192.168.4.1/ in a browser) and 
+#. finally register the sensor at https://meine.luftdaten.info/ with your *Sensor ID*
+
+
+
+## Building the software
 
 ### Linux
+
 Currently Linux builds require *Python 3.6* (but 3.7 seems to work fine as
 well), GNU make and Qt Linguist tools. Following packages should suffice on
 Ubuntu:
@@ -45,8 +95,7 @@ to see actual source of that error, `console` flag in `luftdaten-tool.spec` can
 be switched to `True`. In Windows this will make application output a proper
 stack trace to `cmd` popup.
 
-Development
------------
+## Development
 
 Both build & runtime requirements are defined in `requirements.txt` file. In
 order to install these use the following command:
@@ -71,8 +120,7 @@ To remove all build artifacts use:
 All requirements are set up using wildcards, so, in theory, `Makefile` shouldn't
 need much changes in near future.
 
-Translations
-------------
+## Translations
 
 In order to rebuild `*.ts` files use:
 
