@@ -37,11 +37,14 @@ If you want to delete/reset all settings on the device (e.g. the Wifi credential
 
 ### Screenshots
 
-![Select the firmware](images/airrohr-flasher_select_firmware.png)
+![Select the firmware](images/airrohr-flasher_select_firmware.png "Select the firmware")
 
-![Flasing is finished, take a note of the sensor ID (here: 13596333)](images/airrohr-flasher_flash_finished.png)
+    Select the firmware
 
-![The upload button starts the flashing procedure](images/airrohr-flasher_flash_progress.png)
+![The upload button starts the flashing procedure](images/airrohr-flasher_flash_progress.png "The upload button starts the flashing procedure")
+
+![Flashing is finished, take a note of the sensor ID (here: 1596171)](images/airrohr-flasher_flash_finished.png "Flashing is finished, take a note of the sensor ID (here: 1596171)")
+
 
 
 ### Further steps
