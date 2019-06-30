@@ -21,6 +21,39 @@ On Linux you should not need drivers, as they are usually already there, but you
 
 * Debian/Ubuntu: add your user to the group `dialout` with `sudo usermod -a -G dialout ${USER}` (you may need to restart the desktop to apply your new group settings).
 
+## Using the software
+
+To flash a device:
+
+#. connect the ESP8266 with a USB cable to your computer (micro-USB)
+#. launch the downloaded software
+#. check/select the serial device
+#. select the firmware (`latest_<COUNTRYCODE>.bin` should be fine for any setup)
+#. press button *Upload*
+#. wait for a few seconds to finish the flashing procedure
+#. take a note of the **Sensor ID** written in the Window status bar at the bottom - you will need it to register the sensor
+
+If you want to delete/reset all settings on the device (e.g. the Wifi credentials) you can use the `Erase Flash` button (exists in software version 0.2.2 and above).
+
+### Screenshots
+
+![Select the firmware](images/airrohr-flasher_select_firmware.png)
+
+![Flasing is finished, take a note of the sensor ID (here: 13596333)](images/airrohr-flasher_flash_finished.png)
+
+![The upload button starts the flashing procedure](images/airrohr-flasher_flash_progress.png)
+
+
+### Further steps
+
+Now your device is flashed, you may now 
+
+#. connect the sensors to it, 
+#. configure the WiFi (connect your computer/smartphone to the AP `feinstaubsensor-<sensorID>` and open up http://192.168.4.1/ in a browser) and 
+#. finally register the sensor at https://meine.luftdaten.info/ with your *Sensor ID*
+
+
+
 ## Building the software
 
 ### Linux
