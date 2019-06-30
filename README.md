@@ -64,9 +64,17 @@ Ubuntu:
 
     sudo apt install qttools5-dev-tools python3.6 make
 
+If you want to build in a python virtualenv (recommended) you should create one with
+
+    mkvirtualenv -p "$(which python3)" airrohr-firmware-flasher
+    # deactivate # to leave the virtualenv later
+    # workon airrohr-firmware-flasher to re-enter virtualenv
+
 Then, to install python dependencies and build the binary use:
 
     make deps dist
+
+The built binary will be `dist/luftdaten-tool`.
 
 ### Windows
 
