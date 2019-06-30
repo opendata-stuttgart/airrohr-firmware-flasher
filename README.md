@@ -25,13 +25,13 @@ On Linux you should not need drivers, as they are usually already there, but you
 
 To flash a device:
 
-#. connect the ESP8266 with a USB cable to your computer (micro-USB)
-#. launch the downloaded software
-#. check/select the serial device
-#. select the firmware (`latest_<COUNTRYCODE>.bin` should be fine for any setup)
-#. press button *Upload*
-#. wait for a few seconds to finish the flashing procedure
-#. take a note of the **Sensor ID** written in the Window status bar at the bottom - you will need it to register the sensor
+1. connect the ESP8266 with a USB cable to your computer (micro-USB)
+2. launch the downloaded software
+3. check/select the serial device
+4. select the firmware (`latest_<COUNTRYCODE>.bin` should be fine for any setup)
+5. press button *Upload*
+6. wait for a few seconds to finish the flashing procedure
+7. take a note of the **Sensor ID** written in the Window status bar at the bottom - you will need it to register the sensor
 
 If you want to delete/reset all settings on the device (e.g. the Wifi credentials) you can use the `Erase Flash` button (exists in software version 0.2.2 and above).
 
