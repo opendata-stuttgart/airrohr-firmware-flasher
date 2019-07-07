@@ -1,8 +1,5 @@
 os:
   - linux
-  - osx
-
-osx_image: xcode10.2
 
 language:
   - python
