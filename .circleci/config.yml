@@ -4,14 +4,14 @@ workflows:
     jobs:
       build:
         machine:
-          image: ubuntu-1604:201903-01
-      steps:
-        - checkout
-        - run:
-            name: make Linux
-            command: |
-              sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa &&
-              sudo apt-get update -qq &&
-              sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev  &&
-              sudo apt-get install qttools5-dev-tools make
-              make deps dist
+          - image: ubuntu-1604:201903-01
+        steps:
+          - checkout
+          - run:
+              name: make Linux
+              command: |
+                sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa &&
+                sudo apt-get update -qq &&
+                sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev  &&
+                sudo apt-get install qttools5-dev-tools make
+                make deps dist
