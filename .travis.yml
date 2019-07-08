@@ -21,7 +21,7 @@ before_install:
     ;
     fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-	  curl -Lo "/tmp/python-3.6.9-macosx10.6.pkg" -C - "https://www.python.org/ftp/python/3.6.9/python-3.6.9-macosx10.6.pkg" && sudo installer -pkg "/tmp/python-3.6.9-macosx10.6.pkg" -target /Library/Frameworks/Python.framework/Versions/3.6
+      curl -Lo "/tmp/python-3.6.9-macosx10.6.pkg" -C - "https://www.python.org/ftp/python/3.6.9/python-3.6.9-macosx10.6.pkg" && sudo installer -pkg "/tmp/python-3.6.9-macosx10.6.pkg" -target /Library/Frameworks/Python.framework/Versions/3.6
       export PATH="$HOME/Qt/5.11.1/clang_64/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
     ;
     fi
