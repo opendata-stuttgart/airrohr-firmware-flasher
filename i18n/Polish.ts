@@ -4,22 +4,22 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../luftdaten-tool.py" line="132"/>
+        <location filename="../airrohr-flasher.py" line="132"/>
         <source>No boards found</source>
         <translation>Nie znaleziono płytki</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="141"/>
+        <location filename="../airrohr-flasher.py" line="141"/>
         <source>Others...</source>
         <translation>Inne...</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="170"/>
+        <location filename="../airrohr-flasher.py" line="170"/>
         <source>No device selected.</source>
         <translation>Nie wybrano urządzenia.</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="174"/>
+        <location filename="../airrohr-flasher.py" line="174"/>
         <source>No version selected.</source>
         <translation>Nie wybrano wersji.</translation>
     </message>
@@ -49,52 +49,52 @@
         <translation>Prędkość portu:</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="189"/>
+        <location filename="../airrohr-flasher.py" line="189"/>
         <source>Invalid version / file does not exist</source>
         <translation>Błędna wersja / plik nie istnieje</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="194"/>
+        <location filename="../airrohr-flasher.py" line="194"/>
         <source>Work in progess...</source>
         <translation>Praca w toku...</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="221"/>
+        <location filename="../airrohr-flasher.py" line="221"/>
         <source>Downloading...</source>
         <translation>Pobieranie...</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="231"/>
+        <location filename="../airrohr-flasher.py" line="231"/>
         <source>Connecting...</source>
         <translation>Łączenie...</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="236"/>
+        <location filename="../airrohr-flasher.py" line="236"/>
         <source>Connected. Chip type: {chip_type}</source>
         <translation>Połączono. Typ układu: {chip_type}</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="254"/>
+        <location filename="../airrohr-flasher.py" line="254"/>
         <source>Writing at 0x{address:08x}...</source>
         <translation>Zapisywanie pod adresem 0x{address:08x}...</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="265"/>
+        <location filename="../airrohr-flasher.py" line="265"/>
         <source>Finished in {time:.2f} seconds. Sensor ID: {sensor_id}</source>
         <translation>Zakończono w {time:.2f} sekundy. ID sensora: {sensor_id}</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="236"/>
-        <source>Luftdaten.info Flashing Tool</source>
-        <translation>Luftdaten.info Flashing Tool</translation>
+        <source>Sensor.Community Airrohr Flasher</source>
+        <translation>Sensor.Community Airrohr Flasher</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="52"/>
+        <location filename="../airrohr-flasher.py" line="52"/>
         <source>Loading firmware list...</source>
         <translation>Ładowanie wersji oprogramowania...</translation>
     </message>
     <message>
-        <location filename="../luftdaten-tool.py" line="132"/>
+        <location filename="../airrohr-flasher.py" line="132"/>
         <source>Have you installed &lt;a href=&quot;{drivers_url}&quot;&gt;the drivers&lt;/a&gt;?</source>
         <translation>Czy zainstalowałeś &lt;a href=&quot;{drivers_url}&quot;&gt;sterowniki&lt;/a&gt;?</translation>
     </message>

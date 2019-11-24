@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Luftdaten.info Flashing Tool (v{version})</string>
+   <string>Sensor.Community - Airrohr Flasher (v{version})</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -301,7 +301,7 @@
            </font>
           </property>
           <property name="text">
-           <string>&lt;b&gt;Luftdaten.info Flashing Tool&lt;/b&gt;&lt;br/&gt;Build {build_id}</string>
+           <string>&lt;b&gt;Sensor.Community Airrohr Flasher&lt;/b&gt;&lt;br/&gt;Build {build_id}</string>
           </property>
          </widget>
         </item>

@@ -25,7 +25,7 @@ clean:
 	rm $(TS_COMPILED)
 
 run: all
-	$(PY) luftdaten-tool.py
+	$(PY) airrohr-flasher.py
 
 # Updates all translation files in i18n/ directory
 i18n-update: $(UI_COMPILED)
@@ -46,7 +46,7 @@ assets/logo.icns: assets/logo.png
 endif
 
 dist: all $(PLATFORM_DEPS)
-	$(PY) -m PyInstaller -y luftdaten-tool.spec
+	$(PY) -m PyInstaller -y airrohr-flasher.spec
 
 dmg: dist
-	dmgbuild -s deploy/dmgbuild_settings.py -D app=dist/Luftdaten.info\ Flashing\ Tool.app "Luftdaten.info Flashing Tool" dist/luftdaten-tool.dmg
+	dmgbuild -s deploy/dmgbuild_settings.py -D app=dist/Sensor.Community\ Airrohr\ Flasher.app "Sensor.Community Airrohr Flasher" dist/airrohr-flasher.dmg

@@ -1,4 +1,4 @@
-# luftdaten.info flashing tool
+# Sensor.Community flashing tool
 
 ## Binary builds and downloads
 
@@ -50,7 +50,7 @@ Now your device is flashed, you may now
 
 1. connect the sensors to it, 
 2. configure the WiFi (connect your computer/smartphone to the AP `feinstaubsensor-<sensorID>` and open up http://192.168.4.1/ in a browser) and 
-3. finally register the sensor at https://meine.luftdaten.info/ with your *Sensor ID*
+3. finally register the sensor at https://devices.sensor.community/ with your *Sensor ID*
 
 
 
@@ -62,7 +62,7 @@ Currently Linux builds require *Python 3.6* (but 3.7 seems to work fine as
 well), GNU make and Qt Linguist tools. Following packages should suffice on
 Ubuntu:
 
-    sudo apt install qttools5-dev-tools python3.6 make
+    sudo apt install qttools5-dev-tools pyqt5-dev-tools python3.6 make
 
 If you want to build in a python virtualenv (recommended) you should create one with
 
@@ -74,7 +74,7 @@ Then, to install python dependencies and build the binary use:
 
     make deps dist
 
-The built binary will be `dist/luftdaten-tool`.
+The built binary will be `dist/airrohr-flasher`.
 
 ### Windows
 
@@ -98,8 +98,8 @@ Then just install dependencies and build everything using:
 ### Binary build debugging
 
 In case an error occurs in early stages of application startup, user will be
-presented with a "Failed to execute script luftdaten-tool.exe" message. In order
-to see actual source of that error, `console` flag in `luftdaten-tool.spec` can
+presented with a "Failed to execute script airrohr-flasher.exe" message. In order
+to see actual source of that error, `console` flag in `airrohr-flasher.spec` can
 be switched to `True`. In Windows this will make application output a proper
 stack trace to `cmd` popup.
 
@@ -113,7 +113,7 @@ order to install these use the following command:
 To manage dynamic UI and translation binaries generation we use a very simple
 GNU make-based build system.
 
-To simply build everything needed to run `luftdaten-tool.py` run:
+To simply build everything needed to run `airrohr-flasher.py` run:
 
     make
 
