@@ -1,6 +1,6 @@
 UI_FILES = $(wildcard gui/*.ui)
 TS_FILES = $(wildcard i18n/*.ts)
-PY_FILES = $(wildcard *.py) $(wildcard gui/*.py) $(wildcard luftdatentool/*.py)
+PY_FILES = $(wildcard *.py) $(wildcard gui/*.py) $(wildcard airrohrFlasher/*.py)
 
 UI_COMPILED = $(UI_FILES:.ui=.py)
 TS_COMPILED = $(TS_FILES:.ts=.qm)
