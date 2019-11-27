@@ -12,15 +12,15 @@ import logging
 import requests
 from esptool import ESPLoader, erase_flash
 
-import luftdatentool
-from luftdatentool.qtvariant import QtGui, QtCore, QtWidgets
-from luftdatentool.utils import QuickThread
-from luftdatentool.workers import PortDetectThread, FirmwareListThread, \
+import airrohrFlasher
+from airrohrFlasher.qtvariant import QtGui, QtCore, QtWidgets
+from airrohrFlasher.utils import QuickThread
+from airrohrFlasher.workers import PortDetectThread, FirmwareListThread, \
     ZeroconfDiscoveryThread
 
 from gui import mainwindow
 
-from luftdatentool.consts import UPDATE_REPOSITORY, ALLOWED_PROTO, \
+from airrohrFlasher.consts import UPDATE_REPOSITORY, ALLOWED_PROTO, \
     PREFERED_PORTS, ROLE_DEVICE, DRIVERS_URL
 
 if getattr(sys, 'frozen', False):
@@ -92,12 +92,12 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
     @property
     def version(self):
-        return luftdatentool.__version__
+        return airrohrFlasher.__version__
 
     @property
     def build_id(self):
         try:
-            from luftdatentool._buildid import commit, builddate
+            from airrohrFlasher._buildid import commit, builddate
         except ImportError:
             import datetime
             commit = 'devel'
