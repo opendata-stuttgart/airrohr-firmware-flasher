@@ -122,6 +122,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             version=self.version))
         win.buildLabel.setText(win.buildLabel.text().format(
             build_id=self.build_id))
+
     def populate_versions(self, files):
         """Loads available firmware versions into versionbox widget"""
 
@@ -202,7 +203,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             self.statusbar.showMessage(self.tr("No version selected."))
             return
 
-        sel =  self.versionBox.model().item(
+        sel = self.versionBox.model().item(
             self.versionBox.currentIndex())
         if sel:
             orig_version = sel.text()
@@ -265,10 +266,10 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         progress.emit(self.tr('Connected. Chip type: {chip_type}').format(
                       chip_type=esp.get_chip_description()), 0)
         esp = esp.run_stub()
-        esp.change_baud(baudrate)        
+        esp.change_baud(baudrate)
         esp.erase_flash()
         progress.emit(self.tr('Erasing complete!'), 100)
-        
+
     @QtCore.Slot()
     def on_eraseButton_clicked(self):
         self.statusbar.clearMessage()
@@ -284,7 +285,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         self.erase_board(self.uploadProgress, device,
                          error=self.errorSignal)
-                        
+
     @QuickThread.wrap
     def flash_board(self, progress, device, binary_uri, baudrate=460800):
         if binary_uri.startswith(ALLOWED_PROTO):
@@ -331,9 +332,9 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     @QtCore.Slot()
     def on_expertModeBox_clicked(self):
         self.expertForm.setVisible(self.expertModeBox.checkState())
-        #self.centralwidget.setFixedHeight(
-        #    self.centralwidget.sizeHint().height())
-        #self.setFixedHeight(self.sizeHint().height())
+        # self.centralwidget.setFixedHeight(
+        #     self.centralwidget.sizeHint().height())
+        # self.setFixedHeight(self.sizeHint().height())
 
     # Zeroconf page
     def discovery_start(self):
@@ -344,7 +345,6 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.zeroconf_discovery.deviceDiscovered.connect(
             self.on_zeroconf_discovered)
         self.zeroconf_discovery.start()
-
 
     def on_zeroconf_discovered(self, name, address, info):
         """Called on every zeroconf discovered device"""

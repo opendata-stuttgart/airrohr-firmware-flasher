@@ -45,8 +45,8 @@ class ZeroconfDiscoveryThread(QuickThread):
         """This thread scans for Bonjour/mDNS devices and emits
         deviceDiscovered signal with its name, address and info object"""
         self.zc = zeroconf.Zeroconf()
-        self.browser = zeroconf.ServiceBrowser(self.zc, "_http._tcp.local.",
-                                          handlers=[self.on_state_change])
+        self.browser = zeroconf.ServiceBrowser(
+            self.zc, "_http._tcp.local.", handlers=[self.on_state_change])
         while True:
             time.sleep(0.5)
 
