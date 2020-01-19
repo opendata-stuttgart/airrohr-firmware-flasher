@@ -65,8 +65,9 @@ Ubuntu:
     sudo apt install qttools5-dev-tools pyqt5-dev-tools python3.6 make
 
 On Fedora:
-    `sudo dnf install sudo dnf install qt5-qttools-devel python3-devel make
-    ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease`
+    
+    sudo dnf install qt5-qttools-devel python3-devel make
+    ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
 
 If you want to build in a python virtualenv (recommended) you should create one with
 
