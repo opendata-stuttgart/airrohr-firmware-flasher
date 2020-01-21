@@ -329,6 +329,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             'Finished in {time:.2f} seconds. Sensor ID: {sensor_id}').format(
                 time=t, sensor_id=esp.chip_id()), 100)
 
+        esp.flash_finish(True)
+
     @QtCore.Slot()
     def on_expertModeBox_clicked(self):
         self.expertForm.setVisible(self.expertModeBox.checkState())
@@ -348,10 +350,10 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
     def on_zeroconf_discovered(self, name, address, info):
         """Called on every zeroconf discovered device"""
-        if (name.startswith('Feinstaubsensor')
-                or name.startswith('NAM')
-                or name.startswith('Smogomierz')
-                or name.startswith('airrohr')):
+        if (name.lower().startswith('feinstaubsensor')
+                or name.lower().startswith('nam')
+                or name.lower().startswith('smogomierz')
+                or name.lower().startswith('airrohr')):
             item = QtWidgets.QListWidgetItem('{}: {}'.format(address, name.split('.')[0]))
             item.setData(ROLE_DEVICE, 'http://{}:{}'.format(address, info.port))
             self.discoveryList.addItem(item)

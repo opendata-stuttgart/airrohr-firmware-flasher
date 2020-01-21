@@ -3,44 +3,44 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../airrohr-flasher.py" line="160"/>
+        <location filename="../airrohr-flasher.py" line="161"/>
         <source>No boards found</source>
         <translation>Nie znaleziono płytki</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="169"/>
+        <location filename="../airrohr-flasher.py" line="170"/>
         <source>Others...</source>
         <translation>Inne...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="279"/>
+        <location filename="../airrohr-flasher.py" line="280"/>
         <source>No device selected.</source>
         <translation>Nie wybrano urządzenia.</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="202"/>
+        <location filename="../airrohr-flasher.py" line="203"/>
         <source>No version selected.</source>
         <translation>Nie wybrano wersji.</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="235"/>
         <source>Board:</source>
-        <translation type="unfinished">Płytka:</translation>
+        <translation>Płytka:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="231"/>
         <source>Firmware version:</source>
-        <translation type="unfinished">Wersja oprogramowania:</translation>
+        <translation>Wersja oprogramowania:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="232"/>
         <source>Upload</source>
-        <translation type="unfinished">Wgraj</translation>
+        <translation>Wgraj</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="234"/>
         <source>Expert mode</source>
-        <translation type="unfinished">Tryb eksperta</translation>
+        <translation>Tryb eksperta</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="236"/>
@@ -48,37 +48,37 @@
         <translation type="unfinished">Prędkość portu:</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="222"/>
+        <location filename="../airrohr-flasher.py" line="223"/>
         <source>Invalid version / file does not exist</source>
         <translation>Błędna wersja / plik nie istnieje</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="227"/>
+        <location filename="../airrohr-flasher.py" line="228"/>
         <source>Work in progess...</source>
         <translation>Praca w toku...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="254"/>
+        <location filename="../airrohr-flasher.py" line="255"/>
         <source>Downloading...</source>
         <translation>Pobieranie...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="294"/>
+        <location filename="../airrohr-flasher.py" line="295"/>
         <source>Connecting...</source>
         <translation>Łączenie...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="299"/>
+        <location filename="../airrohr-flasher.py" line="300"/>
         <source>Connected. Chip type: {chip_type}</source>
         <translation>Połączono. Typ układu: {chip_type}</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="317"/>
+        <location filename="../airrohr-flasher.py" line="318"/>
         <source>Writing at 0x{address:08x}...</source>
         <translation>Zapisywanie pod adresem 0x{address:08x}...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="328"/>
+        <location filename="../airrohr-flasher.py" line="329"/>
         <source>Finished in {time:.2f} seconds. Sensor ID: {sensor_id}</source>
         <translation>Zakończono w {time:.2f} sekundy. ID sensora: {sensor_id}</translation>
     </message>
@@ -93,67 +93,67 @@
         <translation>Ładowanie wersji oprogramowania...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="160"/>
+        <location filename="../airrohr-flasher.py" line="161"/>
         <source>Have you installed &lt;a href=&quot;{drivers_url}&quot;&gt;the drivers&lt;/a&gt;?</source>
         <translation>Czy zainstalowałeś &lt;a href=&quot;{drivers_url}&quot;&gt;sterowniki&lt;/a&gt;?</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="237"/>
         <source>Flashing</source>
-        <translation type="unfinished">Programowanie</translation>
+        <translation>Programowanie</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="238"/>
         <source>Double-click to open configuration page.</source>
-        <translation type="unfinished">Naciśnij dwukrotnie aby otworzyć stronę konfiguracji.</translation>
+        <translation>Naciśnij dwukrotnie aby otworzyć stronę konfiguracji.</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="239"/>
         <source>Sensors detected in local network:</source>
-        <translation type="unfinished">Sensory wykryte w sieci lokalnej:</translation>
+        <translation>Sensory wykryte w sieci lokalnej:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="240"/>
         <source>Refresh</source>
-        <translation type="unfinished">Odśwież</translation>
+        <translation>Odśwież</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="241"/>
         <source>Discovery</source>
-        <translation type="unfinished">Wykrywanie</translation>
+        <translation>Wykrywanie</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="242"/>
         <source>In case of sensor issues, Serial Monitor can be used to review logs sent by the sensor over USB cable.</source>
-        <translation type="unfinished">W przypadku problemów z sensorem, Serial Monitor pozwala na przejrzenie stanu urządzenia przez kabel USB.</translation>
+        <translation>W przypadku problemów z sensorem, Serial Monitor pozwala na przejrzenie stanu urządzenia przez kabel USB.</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="243"/>
         <source>Connect</source>
-        <translation type="unfinished">Połącz</translation>
+        <translation>Połącz</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="244"/>
         <source>Serial Monitor</source>
-        <translation type="unfinished">Serial Monitor</translation>
+        <translation>Serial Monitor</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="237"/>
+        <location filename="../gui/mainwindow.py" line="246"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Developed by &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wykonane przez &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Ten program wypuszczony jest na warunkach licencji MIT. Brak gwarancji.&lt;/p&gt;&lt;p&gt;Najnowszą wersję znajdziesz na: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wykonane przez &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Ten program wypuszczony jest na warunkach licencji MIT. Brak gwarancji.&lt;/p&gt;&lt;p&gt;Najnowszą wersję znajdziesz na: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="247"/>
         <source>About</source>
-        <translation type="unfinished">O programie</translation>
+        <translation>O programie</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="271"/>
+        <location filename="../airrohr-flasher.py" line="272"/>
         <source>Erasing complete!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="283"/>
+        <location filename="../airrohr-flasher.py" line="284"/>
         <source>Erasing in progress...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -170,12 +170,7 @@
     <message>
         <location filename="../gui/mainwindow.py" line="245"/>
         <source>&lt;b&gt;Sensor.Community Airrohr Flasher&lt;/b&gt;&lt;br/&gt;Build {build_id}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/mainwindow.py" line="246"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Developed by &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Maintained by &lt;a href=&quot;https://sensor.community/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Sensor.Community&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Sensor.Community Airrohr Flasher&lt;/b&gt;&lt;br/&gt;Build {build_id}</translation>
     </message>
 </context>
 </TS>
