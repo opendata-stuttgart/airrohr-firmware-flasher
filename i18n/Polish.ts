@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0" language="pl" sourcelanguage="">
+<!DOCTYPE TS>
+<TS version="2.1" language="pl">
 <context>
     <name>MainWindow</name>
     <message>
@@ -45,7 +46,7 @@
     <message>
         <location filename="../gui/mainwindow.py" line="236"/>
         <source>Baudrate:</source>
-        <translation type="unfinished">Prędkość portu:</translation>
+        <translation>Prędkość portu:</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="223"/>
@@ -150,22 +151,22 @@
     <message>
         <location filename="../airrohr-flasher.py" line="272"/>
         <source>Erasing complete!</source>
-        <translation type="unfinished"></translation>
+        <translation>Czyszczenie zakończone!</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="284"/>
         <source>Erasing in progress...</source>
-        <translation type="unfinished"></translation>
+        <translation>Trwa czyszczenie...</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="230"/>
         <source>Sensor.Community - Airrohr Flasher (v{version})</source>
-        <translation type="unfinished"></translation>
+        <translation>Sensor.Community - Airrohr Flasher (v{version})</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="233"/>
         <source>Erase Flash</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyczyść pamięć</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="245"/>
