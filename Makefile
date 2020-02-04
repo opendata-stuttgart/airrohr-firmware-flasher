@@ -34,7 +34,7 @@ i18n-update: $(UI_COMPILED)
 	done
 
 deps:
-	$(PY) -m pip install -U -r requirements.txt
+	$(PY) -m pip install --user -U -r requirements.txt
 
 # Here go platform-specific buildsteps
 UNAME_S := $(shell uname -s)

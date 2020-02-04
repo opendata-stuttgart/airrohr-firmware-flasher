@@ -67,7 +67,7 @@ Ubuntu (18.04):
 On Fedora:
     
     sudo dnf install qt5-qttools-devel python3-devel make
-    ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
+    sudo ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
 
 If you want to build in a python virtualenv (recommended) you should create one with
 
