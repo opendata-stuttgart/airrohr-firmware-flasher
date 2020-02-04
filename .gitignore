@@ -11,3 +11,5 @@ dist/
 *.qm
 gui/*.py
 !gui/__init__.py
+
+.DS_Store
