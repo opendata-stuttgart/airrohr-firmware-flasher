@@ -60,11 +60,11 @@ Now your device is flashed, you may now
 
 Currently Linux builds require *Python 3.6* (but 3.7 seems to work fine as
 well), GNU make and Qt Linguist tools. Following packages should suffice on
-Ubuntu (18.04):
+Ubuntu (tested on Ubuntu 18.04):
 
     sudo apt install qttools5-dev-tools pyqt5-dev-tools qt5-default python3-pip python3.6 make
 
-On Fedora:
+On Fedora (tested on Fedora 31):
     
     sudo dnf install qt5-qttools-devel python3-devel make
     sudo ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
