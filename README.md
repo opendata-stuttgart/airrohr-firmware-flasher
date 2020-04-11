@@ -62,7 +62,7 @@ Currently Linux builds require *Python 3.6* (but 3.7 seems to work fine as
 well), GNU make and Qt Linguist tools. Following packages should suffice on
 Ubuntu (tested on Ubuntu 18.04):
 
-    sudo apt install qttools5-dev-tools pyqt5-dev-tools qt5-default python3-pip python3.6 make
+    sudo apt install qttools5-dev-tools pyqt5-dev-tools qt5-default python3-pip python3.6 python3-virtualenv make
 
 On Fedora (tested on Fedora 31):
     
@@ -71,7 +71,7 @@ On Fedora (tested on Fedora 31):
 
 If you want to build in a python virtualenv (recommended) you should create one with
 
-    mkvirtualenv -p "$(which python3)" airrohr-firmware-flasher
+    virtualenv -p "$(which python3)" airrohr-firmware-flasher
     # deactivate # to leave the virtualenv later
     # workon airrohr-firmware-flasher to re-enter virtualenv
 
