@@ -71,6 +71,7 @@ On Fedora (tested on Fedora 31):
 
 If you want to build in a python virtualenv (recommended) you should create one with
 
+	pip install virtualenvwrapper
     mkvirtualenv -p "$(which python3)" airrohr-firmware-flasher
     # deactivate # to leave the virtualenv later
     # workon airrohr-firmware-flasher to re-enter virtualenv
