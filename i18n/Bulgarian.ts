@@ -92,10 +92,10 @@
         <source>Upload</source>
         <translation>Качване</translation>
     </message>
-    <message>Флаш изтриване
+    <message>
         <location filename="../gui/mainwindow.py" line="233"/>
         <source>Erase Flash</source>
-        <translation>Флаш-изтриване</translation>
+        <translation>Флаш изтриване</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="234"/>
