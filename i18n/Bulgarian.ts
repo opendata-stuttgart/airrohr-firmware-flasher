@@ -15,7 +15,7 @@
     <message>
         <location filename="../airrohr-flasher.py" line="161"/>
         <source>Have you installed &lt;a href=&quot;{drivers_url}&quot;&gt;the drivers&lt;/a&gt;?</source>
-        <translation>Инсталирахте ле &lt;a href=&quot;{drivers_url}&quot;&gt;драйверите&lt;/a&gt;? </translation>
+        <translation>Инсталирахте ли &lt;a href=&quot;{drivers_url}&quot;&gt;драйверите&lt;/a&gt;? </translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="170"/>
@@ -95,7 +95,7 @@
     <message>Флаш изтриване
         <location filename="../gui/mainwindow.py" line="233"/>
         <source>Erase Flash</source>
-        <translation>Флаш изтриване</translation>
+        <translation>Флаш-изтриване</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="234"/>
@@ -110,7 +110,7 @@
     <message>
         <location filename="../gui/mainwindow.py" line="236"/>
         <source>Baudrate:</source>
-        <translation>Скорост на обмен</translation>
+        <translation>Скорост на обмен:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="237"/>
@@ -120,7 +120,7 @@
     <message>
         <location filename="../gui/mainwindow.py" line="238"/>
         <source>Double-click to open configuration page.</source>
-        <translation>Щракнете двукратно, за да отворите конфигурационната страница</translation>
+        <translation>Щракнете двукратно, за да отворите конфигурационната страница.</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="239"/>
@@ -160,7 +160,7 @@
     <message>
         <location filename="../gui/mainwindow.py" line="246"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Developed by &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Създаден от &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Създаден от &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Този софтуер се пуска при условията на лиценз MIT. Не се предоставя гаранция.&lt;/p&gt;&lt;p&gt;За най-новото издание вижте: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="247"/>
