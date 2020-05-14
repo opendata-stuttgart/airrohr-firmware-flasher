@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="2.0">
+<!DOCTYPE TS>
+<TS version="2.1" language="fr" sourcelanguage="en">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="../airrohr-flasher.py" line="54"/>
         <source>Loading firmware list...</source>
-        <translation>Charger la liste des micrologiciels</translation>
+        <translation>Charger la liste des micrologiciels ...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="161"/>
@@ -15,7 +16,7 @@
     <message>
         <location filename="../airrohr-flasher.py" line="161"/>
         <source>Have you installed &lt;a href=&quot;{drivers_url}&quot;&gt;the drivers&lt;/a&gt;?</source>
-        <translation>Avez-vous installé &lt;a href=&quot;{drivers_url}&quot;&gt;les pilotes&lt;/a&gt; ? </translation>
+        <translation>Avez-vous installé &lt;a href=&quot;{drivers_url}&quot;&gt;les pilotes&lt;/a&gt; ?</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="170"/>
