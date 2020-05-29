@@ -136,6 +136,16 @@ need much changes in near future.
 
 ## Translations
 
+All translation files are located in the `i18n` folder. The files have to be named
+with the language name accourding to https://doc.qt.io/qt-5/qlocale.html#Language-enum (part after `QLocale::`).
+
+The translations can be done with the following tool:
+https://github.com/thurask/Qt-Linguist/releases (Windows binaries, sources available)
+
+Manual translation can be done by editing the .ts file. 
+
+### If english texts are added or changed
+
 In order to rebuild `*.ts` files use:
 
     make i18n-update
