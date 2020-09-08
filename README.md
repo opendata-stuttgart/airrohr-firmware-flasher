@@ -23,6 +23,8 @@ On Linux you should not need drivers, as they are usually already there, but you
 
 ## Using the software
 
+Linux users: Please check that the downloaded file is executable. Otherwise set the executable bit with `chmod u+x <filename of download>`
+
 To flash a device:
 
 1. connect the ESP8266 with a USB cable to your computer (micro-USB)
