@@ -126,13 +126,9 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     def populate_versions(self, files):
         """Loads available firmware versions into versionbox widget"""
 
-        for fname in files:
-            if not fname.endswith('.bin'):
-                continue
-
-            item = QtGui.QStandardItem(fname)
-            item.setData(UPDATE_REPOSITORY + fname, ROLE_DEVICE)
-            self.versionBox.model().appendRow(item)
+        item = QtGui.QStandardItem("Robonomics")
+        item.setData("https://github.com/LoSk-p/sensors-software/blob/master/esp8266-backup.bin?raw=true", ROLE_DEVICE)
+        self.versionBox.model().appendRow(item)
 
         self.statusbar.clearMessage()
 
