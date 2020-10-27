@@ -34,7 +34,7 @@ class FirmwareListThread(QuickThread):
 
     def target(self):
         """Downloads list of available firmware updates in separate thread."""
-        self.listLoaded.emit(["Robonomics"])
+        self.listLoaded.emit(["firmware_ru", "firmware_en"])
 
 
 class ZeroconfDiscoveryThread(QuickThread):
@@ -53,7 +53,7 @@ class ZeroconfDiscoveryThread(QuickThread):
     def on_state_change(self, zeroconf, service_type, name, state_change):
         info = zeroconf.get_service_info(service_type, name)
         if info:
-            self.deviceDiscovered.emit(name, socket.inet_ntoa(info.address), info)
+            self.deviceDiscovered.emit(name, socket.inet_ntoa(info.addresses[0]), info)
 
     def stop(self):
         if self.browser:

@@ -23,7 +23,7 @@ builddate = "{builddate}"'''.format(commit=commit, builddate=builddate))
 a = Analysis(['airrohr-flasher.py'],
              pathex=['.'],
              binaries=[],
-             datas=[('assets/', './assets'), ('i18n/*.qm', './i18n')],
+             datas=[('assets/', './assets')],
              hiddenimports=['PyQt5.sip'],
              hookspath=[],
              runtime_hooks=[],
