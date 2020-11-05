@@ -20,3 +20,7 @@ jobs:
     - name: build with pyinstaller
       run: |
         pyinstaller airrohr-flasher.spec
+    - uses: actions/upload-artifact@v2
+      with:
+        name: airrohr-flasher
+        path: dist/airrohr-flasher
