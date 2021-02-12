@@ -26,6 +26,7 @@ class QuickThread(QtCore.QThread):
         self.args = args or []
         self.kwargs = kwargs or {}
         self.error = error or self.error
+        self.ip_addr = None
 
     def run(self):
         try:

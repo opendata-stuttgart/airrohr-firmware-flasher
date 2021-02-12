@@ -27,6 +27,23 @@ class PortDetectThread(QuickThread):
             time.sleep(self.interval)
 
             ports = new_ports
+            # #print(ports)
+            # if (ports != []) and (self.ip_addr == None):
+            #     print(str(ports[0]).split()[0])
+            #     ser = serial.Serial(str(ports[0]).split()[0], parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS)
+            #     print(ser.inWaiting())
+            #     i = 0
+            #     while True:
+            #         if ser.inWaiting() > 0:
+            #             data = str(ser.readline())[2:]
+            #             print(data)
+            #             if data[0:14] == "WiFi connected":
+            #                 self.ip_addr = data[23:37]
+            #                 print(self.ip_addr)
+            #                 break
+            #         #if 
+
+            # #print(ports[0])
 
 
 class FirmwareListThread(QuickThread):
@@ -40,6 +57,7 @@ class FirmwareListThread(QuickThread):
 class ZeroconfDiscoveryThread(QuickThread):
     deviceDiscovered = QtCore.Signal(str, str, object)
     browser = None
+    #print("in ZeroconfDiscoveryThread")
 
     def target(self):
         """This thread scans for Bonjour/mDNS devices and emits
@@ -48,12 +66,15 @@ class ZeroconfDiscoveryThread(QuickThread):
         self.browser = zeroconf.ServiceBrowser(
             self.zc, "_http._tcp.local.", handlers=[self.on_state_change])
         while True:
+            
             time.sleep(0.5)
 
     def on_state_change(self, zeroconf, service_type, name, state_change):
+        #print("on_state_change")
         info = zeroconf.get_service_info(service_type, name)
+        #print(info.address)
         if info:
-            self.deviceDiscovered.emit(name, socket.inet_ntoa(info.addresses[0]), info)
+            self.deviceDiscovered.emit(name, socket.inet_ntoa(info.address), info)
 
     def stop(self):
         if self.browser:
