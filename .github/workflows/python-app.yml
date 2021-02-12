@@ -3,7 +3,7 @@ name: PyInstaller
 on: [push]
 
 jobs:
-  buildMac1:
+  buildMac:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v1
@@ -44,24 +44,6 @@ jobs:
       with:
         name: airrohr-flasher-ubuntu
         path: dist/airrohr-flasher
-      
-  buildMac:
-    runs-on: macOS-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Set up Python 3.6
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.6 
-      - name: Build App
-        run: |
-          export PATH="$HOME/Qt/5.11.1/clang_64/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
-          make deps dmg
-          ls dist
-      - uses: actions/upload-artifact@v2
-        with:
-          name: airrohr-flasher-mac
-          path: dist/airrohr-flasher
     
   buildWin:
     runs-on: windows-latest
