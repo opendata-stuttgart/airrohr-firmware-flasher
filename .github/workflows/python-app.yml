@@ -53,6 +53,7 @@ jobs:
       - name: Build App
         run: |
           cd deploy
+          ls
           windows-build.bat
       - uses: actions/upload-artifact@v2
         with:
