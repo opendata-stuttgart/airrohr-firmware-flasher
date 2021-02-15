@@ -58,6 +58,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller requests esptool zeroconf PyQt5
           pyinstaller airrohr-flasher.spec
+          ls dist/
       - uses: actions/upload-artifact@v2
         with:
           name: airrohr-flasher-win
