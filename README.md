@@ -80,6 +80,7 @@ If you want to build in a python virtualenv (recommended) you should create one 
 
 Then, to install python dependencies and build the binary use:
 
+    sudo pip install --upgrade pip
     make deps dist
 
 The built binary will be `dist/airrohr-flasher`.
