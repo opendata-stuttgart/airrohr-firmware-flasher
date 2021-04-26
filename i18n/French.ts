@@ -80,8 +80,8 @@
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="230"/>
-        <source>Sensor.Community - Airrohr Flasher (v{version})</source>
-        <translation>Sensor.Community - Installateur Airrohr (v{version})</translation>
+        <source>Sensor.Community - Customized version of Airrohr Flasher (v{version})</source>
+        <translation>Sensor.Community - Version customisée du Flasher Airrohr (v{version})</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="231"/>
