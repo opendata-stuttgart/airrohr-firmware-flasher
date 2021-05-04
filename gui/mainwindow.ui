@@ -72,7 +72,7 @@
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="tabPosition">
-       <enum>QTabWidget::South</enum>
+       <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
        <number>0</number>
@@ -88,17 +88,33 @@
         <string>Flashing</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0,0,0,0,1">
-        <item row="8" column="0">
-         <widget class="QLabel" name="label_2">
+
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_board">
+          <property name="text">
+           <string>Board:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="boardBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_fwVersion">
           <property name="text">
            <string>Firmware version:</string>
           </property>
          </widget>
         </item>
-        <item row="10" column="0" colspan="2">
-         <widget class="QProgressBar" name="progressBar"/>
-        </item>
-        <item row="8" column="1">
+        <item row="2" column="1">
          <widget class="QComboBox" name="versionBox">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -110,6 +126,24 @@
            <bool>true</bool>
           </property>
          </widget>
+        </item>
+
+        <item row="8" column="0" colspan="2">
+         <widget class="QLabel" name="label_progress">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Progress:</string>
+          </property>
+         </widget>
+		</item>
+
+        <item row="9" column="0" colspan="2">
+         <widget class="QProgressBar" name="progressBar" />
         </item>
         
         <item row="11" column="0" colspan="2">
@@ -128,19 +162,6 @@
            </widget>
           </item>
           <item>
-            <widget class="QPushButton" name="eraseButton">
-            <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-              </sizepolicy>
-            </property>
-            <property name="text">
-              <string>Erase Flash</string>
-            </property>
-            </widget>
-          </item>
-          <item>
            <widget class="QCheckBox" name="expertModeBox">
             <property name="text">
              <string>Expert mode</string>
@@ -151,157 +172,6 @@
            </widget>
           </item>
          </layout>
-        </item>
-
-
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="customName">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Custom name:</string>
-          </property>
-         </widget>
-        </item>
-
-
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="wifiSSID">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Wifi SSID:</string>
-          </property>
-         </widget>
-        </item>
-
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="wifiPW">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Wifi PW:</string>
-          </property>
-         </widget>
-        </item>
-
-        <item row="3" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Sensor 1:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QComboBox" name="sensor1Box">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="editable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-
-        <item row="4" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Sensor 2:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QComboBox" name="sensor2Box">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="editable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-
-        <item row="5" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Language:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QComboBox" name="languageBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="editable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-
-        <item row="6" column="0">
-         <widget class="QPushButton" name="wifiButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-           <property name="text">
-             <string>Save configuration</string>
-            </property>
-         </widget>
-        </item>
-
-        <item row="7" column="1">
-         <widget class="QComboBox" name="boardBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Board:</string>
-          </property>
-         </widget>
         </item>
 
         <item row="7" column="0" colspan="2">
@@ -343,6 +213,172 @@
           </layout>
          </widget>
         </item>
+
+       </layout>
+      </widget>
+      <widget class="QWidget" name="configTab">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <attribute name="title">
+        <string>Configure</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_5" rowstretch="0,0,0,0,0,0,0,1">
+
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_customName">
+          <property name="text">
+           <string>Custom name:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="customName">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_wifiSSID">
+          <property name="text">
+           <string>WiFi SSID:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="wifiSSID">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_wifiPW">
+          <property name="text">
+           <string>WiFi PW:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="wifiPW">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_sensor1">
+          <property name="text">
+           <string>Sensor 1:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="sensor1Box">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_sensor2">
+          <property name="text">
+           <string>Sensor 2:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="sensor2Box">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+
+        <item row="5" column="0">
+         <widget class="QLabel" name="label_language">
+          <property name="text">
+           <string>Language:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QComboBox" name="languageBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+
+        <item row="6" column="0" colspan="2">
+         <widget class="QPushButton" name="wifiButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+           <property name="text">
+             <string>Save configuration</string>
+            </property>
+         </widget>
+        </item>
+
+       </layout>
+      </widget>
+      <widget class="QWidget" name="resetTab">
+       <attribute name="title">
+        <string>Reset config</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_6">
+          <item>
+            <widget class="QPushButton" name="eraseButton">
+            <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+              </sizepolicy>
+            </property>
+            <property name="text">
+              <string>Erase Flash</string>
+            </property>
+            </widget>
+          </item>
        </layout>
       </widget>
       <widget class="QWidget" name="discoveryTab">
