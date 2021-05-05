@@ -16,4 +16,4 @@ pyqt5==5.11.2
 pyserial==3.4
 requests==2.20.0
 urllib3==1.24.2
-zeroconf==0.20.0
+zeroconf==0.28.8

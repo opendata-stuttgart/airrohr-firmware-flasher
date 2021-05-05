@@ -343,6 +343,9 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     @QtCore.Slot()
     def on_wifiButton_clicked(self):
         self.statusbar.clearMessage()
+        
+        device = self.boardBox.currentData(ROLE_DEVICE)
+
         configstring = '{"SOFTWARE_VERSION":"NRZ-2020-133","current_lang":"","wlanssid":"","wlanpwd":"","www_username":"admin","www_password":"","fs_ssid":"","fs_pwd":"","www_basicauth_enabled":false,"dht_read":false,"htu21d_read":false,"ppd_read":false,"sds_read":false,"pms_read":false,"hpm_read":false,"npm_read":false,"sps30_read":false,"bmp_read":false,"bmx280_read":false,"sht3x_read":false,"ds18b20_read":false,"dnms_read":false,"dnms_correction":"0.0","temp_correction":"0.0","gps_read":false,"send2dusti":true,"ssl_dusti":false,"send2madavi":true,"ssl_madavi":false,"send2sensemap":false,"send2fsapp":false,"send2aircms":false,"send2csv":false,"auto_update":true,"use_beta":false,"has_display":false,"has_sh1106":false,"has_flipped_display":false,"has_lcd1602":false,"has_lcd1602_27":false,"has_lcd2004":false,"has_lcd2004_27":false,"display_wifi_info":true,"display_device_info":true,"debug":3,"sending_intervall_ms":145000,"time_for_wifi_config":600000,"senseboxid":"","send2custom":false,"host_custom":"192.168.234.1","url_custom":"/data.php","port_custom":80,"user_custom":"","pwd_custom":"","ssl_custom":false,"send2influx":false,"host_influx":"influx.server","url_influx":"/write?db=sensorcommunity","port_influx":8086,"user_influx":"","pwd_influx":"","measurement_name_influx":"feinstaub","ssl_influx":false}'
         self.configjson = json.loads(configstring)
         ssid = self.wifiSSID.text()
@@ -351,8 +354,6 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         sensor1 = self.sensorsList[self.sensor1Box.currentIndex()]
         sensor2 = self.sensorsList[self.sensor2Box.currentIndex()]
         language = self.languagesList[self.languageBox.currentIndex()]
-        esp = ESPLoader.detect_chip(self.boardBox.currentData(ROLE_DEVICE), min(ESPLoader.ESP_ROM_BAUD, 460800), 'default_reset', False)
-        self.sensorID = esp.chip_id()
 
         if language not in self.languagesList:
             self.statusbar.showMessage(self.tr("Invalid language."))
@@ -363,7 +364,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             return
 
         if not pw:
-            self.statusbar.showMessage(self.tr("No PW type."))
+            self.statusbar.showMessage(self.tr("No password typed."))
             return
 
         if sensor1 == sensor2:
