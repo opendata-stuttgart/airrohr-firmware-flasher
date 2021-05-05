@@ -3,278 +3,283 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../airrohr-flasher.py" line="61"/>
+        <location filename="../airrohr-flasher.py" line="62"/>
         <source>Loading firmware list...</source>
         <translation>Načítání seznamu firmwaru...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="275"/>
+        <location filename="../airrohr-flasher.py" line="277"/>
         <source>No boards found</source>
         <translation>Nebyly nalezeny žádné desky</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="275"/>
+        <location filename="../airrohr-flasher.py" line="277"/>
         <source>Have you installed &lt;a href=&quot;{drivers_url}&quot;&gt;the drivers&lt;/a&gt;?</source>
         <translation>Nainstalovali jste &amp;lt;a href=&quot;{drivers_url}&quot;&amp;gt;ovladače&amp;lt;a&amp;gt;?</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="284"/>
+        <location filename="../airrohr-flasher.py" line="286"/>
         <source>Others...</source>
         <translation>Ostatní...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="572"/>
+        <location filename="../airrohr-flasher.py" line="576"/>
         <source>No device selected.</source>
         <translation>Není vybráno žádné zařízení.</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="494"/>
+        <location filename="../airrohr-flasher.py" line="497"/>
         <source>No version selected.</source>
         <translation>Není vybrána žádná verze.</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="513"/>
+        <location filename="../airrohr-flasher.py" line="517"/>
         <source>Invalid version / file does not exist</source>
         <translation>Neplatná verze souboru neexistuje</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="518"/>
+        <location filename="../airrohr-flasher.py" line="522"/>
         <source>Work in progess...</source>
         <translation>Práce probíhají...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="547"/>
+        <location filename="../airrohr-flasher.py" line="551"/>
         <source>Downloading...</source>
         <translation>Stahování...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="588"/>
+        <location filename="../airrohr-flasher.py" line="592"/>
         <source>Connecting...</source>
         <translation>Připojení...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="593"/>
+        <location filename="../airrohr-flasher.py" line="597"/>
         <source>Connected. Chip type: {chip_type}</source>
         <translation>Připojeno. Typ čipu: Typ čipu: {chip_type}</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="564"/>
+        <location filename="../airrohr-flasher.py" line="568"/>
         <source>Erasing complete!</source>
         <translation>Vymazání dokončeno!</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="576"/>
+        <location filename="../airrohr-flasher.py" line="580"/>
         <source>Erasing in progress...</source>
         <translation>Probíhá mazání...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="611"/>
+        <location filename="../airrohr-flasher.py" line="615"/>
         <source>Writing at 0x{address:08x}...</source>
         <translation>Zápis na 0x{adresa:08x}...</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="622"/>
+        <location filename="../airrohr-flasher.py" line="626"/>
         <source>Finished in {time:.2f} seconds. Sensor ID: {sensor_id}</source>
         <translation>Dokončeno za {čas:.2f} sekund. ID senzoru: {sensor_id}</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="230"/>
+        <location filename="../gui/mainwindow.py" line="369"/>
         <source>Sensor.Community - Airrohr Flasher (v{version})</source>
-        <translation type="obsolete">Sensor.Community - Airrohr Flasher (v{verze})</translation>
+        <translation type="unfinished">Sensor.Community - Airrohr Flasher (v{verze})</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="336"/>
+        <location filename="../gui/mainwindow.py" line="371"/>
         <source>Firmware version:</source>
-        <translation>Verze firmwaru:</translation>
+        <translation type="unfinished">Verze firmwaru:</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="338"/>
+        <location filename="../gui/mainwindow.py" line="375"/>
         <source>Upload</source>
-        <translation>Nahrát</translation>
+        <translation type="unfinished">Nahrát</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="350"/>
+        <location filename="../gui/mainwindow.py" line="390"/>
         <source>Erase Flash</source>
-        <translation>Vymazání paměti Flash</translation>
+        <translation type="unfinished">Vymazání paměti Flash</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="339"/>
+        <location filename="../gui/mainwindow.py" line="376"/>
         <source>Expert mode</source>
-        <translation>Expertní režim</translation>
+        <translation type="unfinished">Expertní režim</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="335"/>
+        <location filename="../gui/mainwindow.py" line="370"/>
         <source>Board:</source>
-        <translation>Představenstvo:</translation>
+        <translation type="unfinished">Představenstvo:</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="340"/>
+        <location filename="../gui/mainwindow.py" line="377"/>
         <source>Baudrate:</source>
-        <translation>Přenosová rychlost:</translation>
+        <translation type="unfinished">Přenosová rychlost:</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="341"/>
+        <location filename="../gui/mainwindow.py" line="378"/>
         <source>Flashing</source>
-        <translation>Blikání</translation>
+        <translation type="unfinished">Blikání</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="352"/>
+        <location filename="../gui/mainwindow.py" line="392"/>
         <source>Double-click to open configuration page.</source>
-        <translation>Dvojitým kliknutím otevřete konfigurační stránku.</translation>
+        <translation type="unfinished">Dvojitým kliknutím otevřete konfigurační stránku.</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="353"/>
+        <location filename="../gui/mainwindow.py" line="393"/>
         <source>Sensors detected in local network:</source>
-        <translation>Senzory detekované v místní síti:</translation>
+        <translation type="unfinished">Senzory detekované v místní síti:</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="354"/>
+        <location filename="../gui/mainwindow.py" line="394"/>
         <source>Refresh</source>
-        <translation>Obnovit</translation>
+        <translation type="unfinished">Obnovit</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="355"/>
+        <location filename="../gui/mainwindow.py" line="395"/>
         <source>Discovery</source>
-        <translation>Discovery</translation>
+        <translation type="unfinished">Discovery</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="356"/>
+        <location filename="../gui/mainwindow.py" line="396"/>
         <source>In case of sensor issues, Serial Monitor can be used to review logs sent by the sensor over USB cable.</source>
-        <translation>V případě problémů se snímačem lze k prohlížení protokolů odesílaných snímačem přes kabel USB použít nástroj Serial Monitor.</translation>
+        <translation type="unfinished">V případě problémů se snímačem lze k prohlížení protokolů odesílaných snímačem přes kabel USB použít nástroj Serial Monitor.</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="357"/>
+        <location filename="../gui/mainwindow.py" line="397"/>
         <source>Connect</source>
-        <translation>Připojení</translation>
+        <translation type="unfinished">Připojení</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="358"/>
+        <location filename="../gui/mainwindow.py" line="398"/>
         <source>Serial Monitor</source>
-        <translation>Sériový monitor</translation>
+        <translation type="unfinished">Sériový monitor</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="359"/>
+        <location filename="../gui/mainwindow.py" line="399"/>
         <source>&lt;b&gt;Sensor.Community Airrohr Flasher&lt;/b&gt;&lt;br/&gt;Build {build_id}</source>
-        <translation>&amp;lt;b&amp;gt;Sensor.Community Airrohr Flasher&amp;lt;b&amp;gt;&amp;lt;br&amp;gt;Stavba {build_id}</translation>
+        <translation type="unfinished">&amp;lt;b&amp;gt;Sensor.Community Airrohr Flasher&amp;lt;b&amp;gt;&amp;lt;br&amp;gt;Stavba {build_id}</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="360"/>
+        <location filename="../gui/mainwindow.py" line="400"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Developed by &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Vyvinuto &amp;lt;a href=&quot;https:/inf.re&quot;&amp;gt;&amp;lt;span style=&quot; text-decoration: underline; color:</translation>
+        <translation type="unfinished">&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Vyvinuto &amp;lt;a href=&quot;https:/inf.re&quot;&amp;gt;&amp;lt;span style=&quot; text-decoration: underline; color:</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="361"/>
+        <location filename="../gui/mainwindow.py" line="401"/>
         <source>About</source>
-        <translation>O stránkách</translation>
+        <translation type="unfinished">O stránkách</translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="340"/>
+        <location filename="../airrohr-flasher.py" line="342"/>
         <source>Invalid sensor name.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="358"/>
+        <location filename="../airrohr-flasher.py" line="361"/>
         <source>Invalid language.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="362"/>
+        <location filename="../airrohr-flasher.py" line="365"/>
         <source>No SSID typed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="366"/>
-        <source>No PW type.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../airrohr-flasher.py" line="370"/>
+        <location filename="../airrohr-flasher.py" line="373"/>
         <source>2 times the same sensor.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="392"/>
+        <location filename="../airrohr-flasher.py" line="395"/>
         <source>Created invalid json.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="396"/>
+        <location filename="../airrohr-flasher.py" line="399"/>
         <source>Created valid json.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="399"/>
+        <location filename="../airrohr-flasher.py" line="402"/>
         <source>Opening temporary json directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="402"/>
+        <location filename="../airrohr-flasher.py" line="405"/>
         <source>Write json in temporay json directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="406"/>
+        <location filename="../airrohr-flasher.py" line="409"/>
         <source>Make SPIFFS bin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../airrohr-flasher.py" line="421"/>
+        <location filename="../airrohr-flasher.py" line="424"/>
         <source>spiffs.bin done!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="334"/>
-        <source>Sensor.Community - Customized version of Airrohr Flasher (v{version})</source>
+        <location filename="../airrohr-flasher.py" line="369"/>
+        <source>No password typed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="337"/>
+        <location filename="../gui/mainwindow.py" line="389"/>
+        <source> </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/mainwindow.py" line="373"/>
         <source>Progress:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="342"/>
+        <location filename="../gui/mainwindow.py" line="379"/>
         <source>Custom name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="343"/>
+        <location filename="../gui/mainwindow.py" line="380"/>
         <source>WiFi SSID:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="344"/>
-        <source>WiFi PW:</source>
+        <location filename="../gui/mainwindow.py" line="381"/>
+        <source>WiFi password:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="345"/>
+        <location filename="../gui/mainwindow.py" line="382"/>
         <source>Sensor 1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="346"/>
+        <location filename="../gui/mainwindow.py" line="383"/>
         <source>Sensor 2:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="347"/>
+        <location filename="../gui/mainwindow.py" line="384"/>
         <source>Language:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="348"/>
+        <location filename="../gui/mainwindow.py" line="386"/>
         <source>Save configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="349"/>
+        <location filename="../gui/mainwindow.py" line="387"/>
         <source>Configure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="351"/>
-        <source>Reset config</source>
+        <location filename="../gui/mainwindow.py" line="388"/>
+        <source>This will completely erase the flash memory (firmware and configuration). After that you will need to reflash the firmware and reconfigure the device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../gui/mainwindow.py" line="391"/>
+        <source>Erase flash</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
