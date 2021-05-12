@@ -36,6 +36,8 @@ else:
 
 class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     uploadProgress = QtCore.Signal([str, int])
+    configProgress = QtCore.Signal([str, int])
+    eraseProgress = QtCore.Signal([str, int])
     errorSignal = QtCore.Signal([str])
     uploadThread = None
     zeroconf_discovery = None
@@ -81,6 +83,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.tabWidget.removeTab(self.tabWidget.indexOf(self.serialTab))
 
         self.uploadProgress.connect(self.on_work_update)
+        self.configProgress.connect(self.on_config_update)
+        self.eraseProgress.connect(self.on_erase_update)
         self.errorSignal.connect(self.on_work_error)
 
         self.cachedir = tempfile.TemporaryDirectory()
@@ -182,6 +186,14 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     def on_work_update(self, status, progress):
         self.statusbar.showMessage(status)
         self.progressBar.setValue(progress)
+
+    def on_config_update(self, status, progress):
+        self.statusbar.showMessage(status)
+        self.progressBar_config.setValue(progress)
+
+    def on_erase_update(self, status, progress):
+        self.statusbar.showMessage(status)
+        self.progressBar_erase.setValue(progress)
 
     def on_work_error(self, message):
         self.statusbar.showMessage(message)
@@ -350,6 +362,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         self.configjson = json.loads(configstring)
         ssid = self.wifiSSID.text()
         pw = self.wifiPW.text()
+        pw_empty = self.wifiPW_empty.isChecked()
         apssid = self.customName.text()
         sensor1 = self.sensorsList[self.sensor1Box.currentIndex()]
         sensor2 = self.sensorsList[self.sensor2Box.currentIndex()]
@@ -363,17 +376,21 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             self.statusbar.showMessage(self.tr("No SSID typed."))
             return
 
-        if not pw:
+        if not pw and not pw_empty:
             self.statusbar.showMessage(self.tr("No password typed."))
             return
+
+        if pw_empty:
+            pw = ""
 
         if sensor1 == sensor2:
             self.statusbar.showMessage(self.tr("2 times the same sensor."))
             return
 
         if not apssid:
-            self.configjson['fs_ssid'] = "airRohr-" + str(self.sensorID)
-            print(self.configjson['fs_ssid'])
+            # self.configjson['fs_ssid'] = "airRohr-" + str(self.sensorID)
+            self.configjson['fs_ssid'] = ""
+            # print(self.configjson['fs_ssid'])
         else:
             self.configjson['fs_ssid'] = apssid + "-" + str(self.sensorID)
             self.customNameSave = apssid
@@ -432,7 +449,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
                 self.statusbar.showMessage(self.tr("Work in progess..."))
                 return
             
-            self.write_config(self.uploadProgress, device, self.cachedirspiffs.name + "/spiffs.bin", error=self.errorSignal)
+            self.write_config(self.configProgress, device, self.cachedirspiffs.name + "/spiffs.bin", error=self.errorSignal)
 
     @QuickThread.wrap
     def write_config(self, progress, device, path, baudrate=460800):
@@ -577,7 +594,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             self.statusbar.showMessage(self.tr("Erasing in progress..."))
             return
 
-        self.erase_board(self.uploadProgress, device,
+        self.erase_board(self.eraseProgress, device,
                          error=self.errorSignal)
 
     @QuickThread.wrap

@@ -260,7 +260,7 @@
        <attribute name="title">
         <string>Configure</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_5" rowstretch="0,0,0,0,0,0,0,0,1">
+       <layout class="QGridLayout" name="gridLayout_5" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,1">
 
         <item row="0" column="0">
          <widget class="QLabel" name="label_customName">
@@ -306,24 +306,64 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="wifiPW">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
+         <layout class="QGridLayout" name="gridLayout_5" rowstretch="0">
+          <item row="0" column="0">
+           <widget class="QLineEdit" name="wifiPW">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+		  </item>
+		  <item row="0" column="1">
+           <widget class="QLabel" name="label_wifiPW_empty">
+            <property name="text">
+		     <string>empty:</string>
+            </property>
+           </widget>
+		  </item>
+		  <item row="0" column="2">
+           <widget class="QCheckBox" name="wifiPW_empty">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+		  </item>
+		 </layout>
         </item>
 
         <item row="3" column="0">
+         <widget class="QLabel" name="label_empty_field">
+          <property name="text">
+           <string> </string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLabel" name="label_desc_empty_password">
+          <property name="text">
+           <string>Mark "empty" if you want to use the device in a wifi network without password.</string>
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+          </property>
+        </widget>
+        </item>
+
+        <item row="4" column="0">
          <widget class="QLabel" name="label_sensor1">
           <property name="text">
            <string>Sensor 1:</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="4" column="1">
          <widget class="QComboBox" name="sensor1Box">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -337,14 +377,14 @@
          </widget>
         </item>
 
-        <item row="4" column="0">
+        <item row="5" column="0">
          <widget class="QLabel" name="label_sensor2">
           <property name="text">
            <string>Sensor 2:</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
+        <item row="5" column="1">
          <widget class="QComboBox" name="sensor2Box">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -358,14 +398,14 @@
          </widget>
         </item>
 
-        <item row="5" column="0">
+        <item row="6" column="0">
          <widget class="QLabel" name="label_language">
           <property name="text">
            <string>Language:</string>
           </property>
          </widget>
         </item>
-        <item row="5" column="1">
+        <item row="6" column="1">
          <widget class="QComboBox" name="languageBox">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -379,7 +419,7 @@
          </widget>
         </item>
 
-        <item row="6" column="0" colspan="2">
+        <item row="7" column="0" colspan="2">
          <widget class="QLabel" name="label_spacer">
           <property name="text">
            <string> </string>
@@ -396,7 +436,42 @@
          </widget>
         </item>
 
-        <item row="7" column="0" colspan="2">
+        <item row="8" column="0" colspan="2">
+         <widget class="QLabel" name="label_progress_config">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Progress:</string>
+          </property>
+         </widget>
+		</item>
+
+        <item row="9" column="0" colspan="2">
+         <widget class="QProgressBar" name="progressBar_config" />
+        </item>
+        
+        <item row="10" column="0" colspan="2">
+         <widget class="QLabel" name="label_spacer">
+          <property name="text">
+           <string> </string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+
+        <item row="11" column="0" colspan="2">
          <widget class="QPushButton" name="wifiButton">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -439,7 +514,25 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
+
+        <item row="1" column="0" colspan="2">
+         <widget class="QLabel" name="label_spacer">
+          <property name="text">
+           <string> </string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+
+        <item row="2" column="0">
          <widget class="QLabel" name="label_progress">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -452,7 +545,29 @@
           </property>
          </widget>
 		</item>
-        <item rot="2" column="0">
+ 
+        <item row="3" column="0" colspan="2">
+         <widget class="QProgressBar" name="progressBar_erase" />
+        </item>
+        
+        <item row="4" column="0" colspan="2">
+         <widget class="QLabel" name="label_spacer">
+          <property name="text">
+           <string> </string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::RichText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+
+        <item rot="5" column="0">
            <widget class="QPushButton" name="eraseButton">
             <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">

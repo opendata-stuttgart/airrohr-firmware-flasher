@@ -265,7 +265,7 @@
     <message>
         <location filename="../gui/mainwindow.py" line="379"/>
         <source>Custom name:</source>
-        <translation> </translation>
+        <translation>Benutzerdef. Name:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="380"/>
