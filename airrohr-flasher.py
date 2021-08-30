@@ -125,8 +125,8 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
     def populate_versions(self, files):
         """Loads available firmware versions into versionbox widget"""
-        files = {"name": ["firmware_en", "firmware_ru"], "link": ["http://upd.sensors.robonomics.network/latest_en.bin", "http://upd.sensors.robonomics.network/latest_ru.bin"]}
-        for i in range(2):
+        files = {"name": ["firmware_en", "firmware_ru", "test"], "link": ["http://upd.sensors.robonomics.network/latest_en.bin", "http://upd.sensors.robonomics.network/latest_ru.bin", "http://upd.sensors.robonomics.network/test.bin"]}
+        for i in range(len(files["name"])):
             item = QtGui.QStandardItem(files["name"][i])
             item.setData(files["link"][i], ROLE_DEVICE)
             self.versionBox.model().appendRow(item)
