@@ -3,16 +3,14 @@ name: PyInstaller
 on: [push]
 
 jobs:
-  build:
-
+  buildMac:
     runs-on: macOS-latest
-
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Python 3.9
+    - name: Set up Python 3.6
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8
+        python-version: 3.6
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -20,8 +18,50 @@ jobs:
     - name: build with pyinstaller
       run: |
         pyinstaller airrohr-flasher.spec
+        ls
         ls dist
     - uses: actions/upload-artifact@v2
       with:
         name: airrohr-flasher
         path: dist/airrohr-flasher
+  buildUbuntu:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.6
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.6
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt install qttools5-dev-tools pyqt5-dev-tools qt5-default python3-pip python3.6 make
+    - name: build with pyinstaller
+      run: |
+        make deps dist && ls dist/
+    - uses: actions/upload-artifact@v2
+      with:
+        name: airrohr-flasher-ubuntu
+        path: dist/airrohr-flasher
+    
+  buildWin:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6 
+      - name: Build App
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller requests esptool zeroconf PyQt5
+          pyinstaller airrohr-flasher.spec
+          ls dist/
+      - uses: actions/upload-artifact@v2
+        with:
+          name: airrohr-flasher-win
+          path: dist/airrohr-flasher.exe
+          
