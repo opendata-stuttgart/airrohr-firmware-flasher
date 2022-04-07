@@ -37,7 +37,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt install qttools5-dev-tools pyqt5-dev-tools qt5-default python3-pip python3.6 make
+        sudo apt-get install qttools5-dev-tools pyqt5-dev-tools qt5-default python3-pip python3.6 make
     - name: build with pyinstaller
       run: |
         make deps dist && ls dist/
