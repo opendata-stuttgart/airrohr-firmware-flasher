@@ -5,167 +5,167 @@
     <message>
         <location filename="../airrohr-flasher.py" line="62"/>
         <source>Loading firmware list...</source>
-        <translation>Charger la liste des micrologiciels ...</translation>
+        <translation>Načítání seznamu firmwaru...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="277"/>
         <source>No boards found</source>
-        <translation>Aucune platine disponible</translation>
+        <translation>Nebyly nalezeny žádné desky</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="277"/>
         <source>Have you installed &lt;a href=&quot;{drivers_url}&quot;&gt;the drivers&lt;/a&gt;?</source>
-        <translation>Avez-vous installé &lt;a href=&quot;{drivers_url}&quot;&gt;les pilotes&lt;/a&gt; ?</translation>
+        <translation>Nainstalovali jste &amp;lt;a href=&quot;{drivers_url}&quot;&amp;gt;ovladače&amp;lt;a&amp;gt;?</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="286"/>
         <source>Others...</source>
-        <translation>Autres ...</translation>
+        <translation>Ostatní...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="576"/>
         <source>No device selected.</source>
-        <translation>Aucun appareil selectionné.</translation>
+        <translation>Není vybráno žádné zařízení.</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="497"/>
         <source>No version selected.</source>
-        <translation>Aucune version sélectionnée.</translation>
+        <translation>Není vybrána žádná verze.</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="517"/>
         <source>Invalid version / file does not exist</source>
-        <translation>Version non valide / Fichier absent</translation>
+        <translation>Neplatná verze souboru neexistuje</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="522"/>
         <source>Work in progess...</source>
-        <translation>Travail en cours...</translation>
+        <translation>Práce probíhají...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="551"/>
         <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
+        <translation>Stahování...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="592"/>
         <source>Connecting...</source>
-        <translation>Connexion...</translation>
+        <translation>Připojení...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="597"/>
         <source>Connected. Chip type: {chip_type}</source>
-        <translation>Connecté. Type de processeur : {chip_type}</translation>
+        <translation>Připojeno. Typ čipu: Typ čipu: {chip_type}</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="568"/>
         <source>Erasing complete!</source>
-        <translation>Effacement réalisé !</translation>
+        <translation>Vymazání dokončeno!</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="580"/>
         <source>Erasing in progress...</source>
-        <translation>Effacement en cours ...</translation>
+        <translation>Probíhá mazání...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="615"/>
         <source>Writing at 0x{address:08x}...</source>
-        <translation>Écriture à partir de 0x{address:08x}...</translation>
+        <translation>Zápis na 0x{adresa:08x}...</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="626"/>
         <source>Finished in {time:.2f} seconds. Sensor ID: {sensor_id}</source>
-        <translation>Terminé en {time:.2f} secondes. Identifiant processeur : {sensor_id}</translation>
+        <translation>Dokončeno za {čas:.2f} sekund. ID senzoru: {sensor_id}</translation>
     </message>
     <message>
-        <location filename="../gui/mainwindow.py" line="334"/>
-        <source>Sensor.Community - Customized version of Airrohr Flasher (v{version})</source>
-        <translation type="obsolete">Sensor.Community - Version customisée du Flasher Airrohr (v{version})</translation>
+        <location filename="../gui/mainwindow.py" line="369"/>
+        <source>Sensor.Community - Airrohr Flasher (v{version})</source>
+        <translation type="unfinished">Sensor.Community - Airrohr Flasher (v{verze})</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="371"/>
         <source>Firmware version:</source>
-        <translation type="unfinished">Version du micrologiciel :</translation>
+        <translation type="unfinished">Verze firmwaru:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="375"/>
         <source>Upload</source>
-        <translation type="unfinished">Téléverser</translation>
+        <translation type="unfinished">Nahrát</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="390"/>
         <source>Erase Flash</source>
-        <translation type="unfinished">Effacer le micrologiciel</translation>
+        <translation type="unfinished">Vymazání paměti Flash</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="376"/>
         <source>Expert mode</source>
-        <translation type="unfinished">Mode expert</translation>
+        <translation type="unfinished">Expertní režim</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="370"/>
         <source>Board:</source>
-        <translation type="unfinished">Platine :</translation>
+        <translation type="unfinished">Představenstvo:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="377"/>
         <source>Baudrate:</source>
-        <translation type="unfinished">Débit de données :</translation>
+        <translation type="unfinished">Přenosová rychlost:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="378"/>
         <source>Flashing</source>
-        <translation type="unfinished">Chargement</translation>
+        <translation type="unfinished">Blikání</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="392"/>
         <source>Double-click to open configuration page.</source>
-        <translation type="unfinished">Double-cliquer pour ouvrir la page de configuration.</translation>
+        <translation type="unfinished">Dvojitým kliknutím otevřete konfigurační stránku.</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="393"/>
         <source>Sensors detected in local network:</source>
-        <translation type="unfinished">Détecteurs trouvés dans le réseau local :</translation>
+        <translation type="unfinished">Senzory detekované v místní síti:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="394"/>
         <source>Refresh</source>
-        <translation type="unfinished">Actualiser</translation>
+        <translation type="unfinished">Obnovit</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="395"/>
         <source>Discovery</source>
-        <translation type="unfinished">Rechercher</translation>
+        <translation type="unfinished">Discovery</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="396"/>
         <source>In case of sensor issues, Serial Monitor can be used to review logs sent by the sensor over USB cable.</source>
-        <translation type="unfinished">En cas de problème, le terminal peut être utilisé pour lire les informations envoyées au port USB par le détecteur.</translation>
+        <translation type="unfinished">V případě problémů se snímačem lze k prohlížení protokolů odesílaných snímačem přes kabel USB použít nástroj Serial Monitor.</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="397"/>
         <source>Connect</source>
-        <translation type="unfinished">Connecter</translation>
+        <translation type="unfinished">Připojení</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="398"/>
         <source>Serial Monitor</source>
-        <translation type="unfinished">Console du port série</translation>
+        <translation type="unfinished">Sériový monitor</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="399"/>
         <source>&lt;b&gt;Sensor.Community Airrohr Flasher&lt;/b&gt;&lt;br/&gt;Build {build_id}</source>
-        <translation type="unfinished">&lt;b&gt;Sensor.Community Installateur Airrohr&lt;/b&gt;&lt;br/&gt;Version {build_id}</translation>
+        <translation type="unfinished">&amp;lt;b&amp;gt;Sensor.Community Airrohr Flasher&amp;lt;b&amp;gt;&amp;lt;br&amp;gt;Stavba {build_id}</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="400"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Developed by &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Programmé par &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Ce logiciel est publié sous les termes de la licence MIT. Aucune garantie n&apos;est fournie.&lt;/p&gt;&lt;p&gt;Pour les dernières versions, consulter : &lt;a href=&quot;https://d.inf.re/luftdaten/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://d.inf.re/luftdaten/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished">&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;body&amp;gt;&amp;lt;p&amp;gt;Vyvinuto &amp;lt;a href=&quot;https:/inf.re&quot;&amp;gt;&amp;lt;span style=&quot; text-decoration: underline; color:</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.py" line="401"/>
         <source>About</source>
-        <translation type="unfinished">À propos</translation>
+        <translation type="unfinished">O stránkách</translation>
     </message>
     <message>
         <location filename="../airrohr-flasher.py" line="342"/>
@@ -220,11 +220,6 @@
     <message>
         <location filename="../airrohr-flasher.py" line="369"/>
         <source>No password typed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../gui/mainwindow.py" line="369"/>
-        <source>Sensor.Community - Airrohr Flasher (v{version})</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -74,7 +74,8 @@ class ZeroconfDiscoveryThread(QuickThread):
         info = zeroconf.get_service_info(service_type, name)
         #print(info.address)
         if info:
-            self.deviceDiscovered.emit(name, socket.inet_ntoa(info.address), info)
+            for addr in info.parsed_addresses():
+                self.deviceDiscovered.emit(name, addr, info)
 
     def stop(self):
         if self.browser:
