@@ -376,64 +376,37 @@
         </item>
 
         <item row="5" column="0">
-         <widget class="QLabel" name="label_sensor1">
+         <widget class="QLabel" name="label_GPSlat">
           <property name="text">
-           <string>Sensor 1:</string>
+           <string>Latitude:</string>
           </property>
          </widget>
         </item>
         <item row="5" column="1">
-         <widget class="QComboBox" name="sensor1Box">
+         <widget class="QLineEdit" name="GPSlat">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
-          </property>
-          <property name="editable">
-           <bool>true</bool>
           </property>
          </widget>
         </item>
 
         <item row="6" column="0">
-         <widget class="QLabel" name="label_sensor2">
+         <widget class="QLabel" name="label_GPSlon">
           <property name="text">
-           <string>Sensor 2:</string>
+           <string>Longitude:</string>
           </property>
          </widget>
         </item>
         <item row="6" column="1">
-         <widget class="QComboBox" name="sensor2Box">
+         <widget class="QLineEdit" name="GPSlon">
           <property name="sizePolicy">
            <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
-          </property>
-          <property name="editable">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-
-        <item row="7" column="0">
-         <widget class="QLabel" name="label_language">
-          <property name="text">
-           <string>Language:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="1">
-         <widget class="QComboBox" name="languageBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="editable">
-           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -719,7 +692,7 @@
         <item row="2" column="0" colspan="2">
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Original version developed by &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://firmware.sensor.community/airrohr/flashing-tool/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://firmware.sensor.community/airrohr/flashing-tool/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Original version developed by &lt;a href=&quot;https://inf.re/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;Piotr Dobrowolski&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This software is released under the terms of MIT license. No warranty is provided.&lt;/p&gt;&lt;p&gt;For newest release see: &lt;a href=&quot;https://firmware.sensor.community/airrohr/flashing-tool/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://github.com/LoSk-p/airrohr-firmware-flasher/releases/&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="textFormat">
            <enum>Qt::RichText</enum>

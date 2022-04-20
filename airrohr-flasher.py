@@ -95,20 +95,23 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         print(self.cachedirjson.name)
         print(self.cachedirspiffs.name)
 
-        self.sensorsList = ["SDS011", "SPS30", "BME280", "BMP180", "BMP280", "DHT22", "DNMS (noise)"]
-        self.languagesList = ["EN","FR","DE"]
-        self.populate_sensors1(self.sensorsList)
-        self.populate_sensors2(self.sensorsList)
-        self.populate_languages(self.languagesList)
+        # self.sensorsList = ["SDS011", "HTU21D", "Geiger Counter", "CCS811", "CCS811_5B" "SPS30", "BME280", "BMP180", "BMP280", "DHT22", "DNMS (noise)", "None"]
+        # self.languagesList = ["EN","RU"]
+        # self.populate_sensors1(self.sensorsList)
+        # self.populate_sensors2(self.sensorsList)
+        # self.populate_languages(self.languagesList)
 
-        self.sensor1Box.setCurrentIndex(0)
-        self.sensor2Box.setCurrentIndex(2)
-        self.languageBox.setCurrentIndex(0)
+        # self.sensor1Box.setCurrentIndex(0)
+        # self.sensor2Box.setCurrentIndex(1)
+        # self.languageBox.setCurrentIndex(0)
 
-        self.customName.setPlaceholderText("Default = airRohr")
+        self.customName.setPlaceholderText("Default = RobonomicsSensor")
 
         self.wifiSSID.setPlaceholderText("Please double check...")
         self.wifiPW.setPlaceholderText("Please double check...")
+
+        self.GPSlat.setPlaceholderText("Latitude of your sensor")
+        self.GPSlon.setPlaceholderText("Longitude of your sensor")
 
         self.configjson = json.loads('{}')
         self.sensorID = 0
@@ -127,6 +130,10 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         # Bool		htu21d_read
         # Bool		ppd_read
         # Bool		sds_read
+        # Bool        gc_read
+        # Bool		ccs811_read
+        # Bool		ccs811_27_read
+        # Bool		file_write
         # Bool		pms_read
         # Bool		hpm_read
         # Bool		npm_read
@@ -137,12 +144,15 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         # Bool		ds18b20_read
         # Bool		dnms_read
         # String		dnms_correction
+        # String		lat_gps
+        # String		lon_gps
         # String		temp_correction
         # Bool		gps_read
         # Bool		send2dusti
         # Bool		ssl_dusti
         # Bool		send2madavi
         # Bool		ssl_madavi
+        # Bool		send2robonomics
         # Bool		send2sensemap
         # Bool		send2fsapp
         # Bool		send2aircms
@@ -233,7 +243,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
     def populate_versions(self, files):
         """Loads available firmware versions into versionbox widget"""
-        files = {"name": ["firmware_en", "firmware_ru", "test"], "link": ["http://upd.sensors.robonomics.network/latest_en.bin", "http://upd.sensors.robonomics.network/latest_ru.bin", "http://upd.sensors.robonomics.network/test.bin"]}
+        files = {"name": ["firmware_en", "firmware_ru"], "link": ["http://upd.sensors.robonomics.network/latest_en.bin", "http://upd.sensors.robonomics.network/latest_ru.bin"]}
         for i in range(len(files["name"])):
             item = QtGui.QStandardItem(files["name"][i])
             item.setData(files["link"][i], ROLE_DEVICE)
@@ -345,6 +355,16 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             self.configjson['ds18b20_read'] = True
         elif value == "DNMS (noise)":
             self.configjson['dnms_read'] = True
+        elif value == "HTU21D":
+            self.configjson['htu21d_read'] = True
+        elif value == "Geiger Counter":
+            self.configjson['gc_read'] = True
+        elif value == "CCS811":
+            self.configjson['ccs811_read'] = True
+        elif value == "CCS811_5B":
+            self.configjson['ccs811_27_read'] = True
+        elif value == "None":
+            pass
         else:
             self.statusbar.showMessage(self.tr("Invalid sensor name."))
             return
@@ -355,19 +375,21 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         
         device = self.boardBox.currentData(ROLE_DEVICE)
 
-        configstring = '{"SOFTWARE_VERSION":"flashingtool","current_lang":"","wlanssid":"","wlanpwd":"","www_username":"admin","www_password":"","fs_ssid":"","fs_pwd":"","www_basicauth_enabled":false,"dht_read":false,"htu21d_read":false,"ppd_read":false,"sds_read":false,"pms_read":false,"hpm_read":false,"npm_read":false,"sps30_read":false,"bmp_read":false,"bmx280_read":false,"sht3x_read":false,"ds18b20_read":false,"dnms_read":false,"dnms_correction":"0.0","temp_correction":"0.0","gps_read":false,"send2dusti":true,"ssl_dusti":false,"send2madavi":true,"ssl_madavi":false,"send2sensemap":false,"send2fsapp":false,"send2aircms":false,"send2csv":false,"auto_update":true,"use_beta":false,"has_display":false,"has_sh1106":false,"has_flipped_display":false,"has_lcd1602":false,"has_lcd1602_27":false,"has_lcd2004":false,"has_lcd2004_27":false,"display_wifi_info":true,"display_device_info":true,"debug":3,"sending_intervall_ms":145000,"time_for_wifi_config":600000,"senseboxid":"","send2custom":false,"host_custom":"192.168.234.1","url_custom":"/data.php","port_custom":80,"user_custom":"","pwd_custom":"","ssl_custom":false,"send2influx":false,"host_influx":"influx.server","url_influx":"/write?db=sensorcommunity","port_influx":8086,"user_influx":"","pwd_influx":"","measurement_name_influx":"feinstaub","ssl_influx":false}'
+        configstring = '{"SOFTWARE_VERSION":"flashingtool","current_lang":"","wlanssid":"","wlanpwd":"","www_username":"admin","www_password":"","fs_ssid":"","fs_pwd":"","www_basicauth_enabled":false,"dht_read":false,"htu21d_read":true,"ppd_read":false,"sds_read":true,"gc_read":false,"ccs811_read":false,"ccs811_27_read":false,"file_write":false,"pms_read":false,"hpm_read":false,"npm_read":false,"sps30_read":false,"bmp_read":false,"bmx280_read":false,"sht3x_read":false,"ds18b20_read":false,"dnms_read":false,"dnms_correction":"0.0","temp_correction":"0.0","lat_gps":"0.0","lon_gps":"0.0","gps_read":false,"send2dusti":true,"ssl_dusti":false,"send2madavi":true,"ssl_madavi":false,"send2robonomics":true,"send2sensemap":false,"send2fsapp":false,"send2aircms":false,"send2csv":false,"auto_update":true,"use_beta":false,"has_display":false,"has_sh1106":false,"has_flipped_display":false,"has_lcd1602":false,"has_lcd1602_27":false,"has_lcd2004":false,"has_lcd2004_27":false,"display_wifi_info":true,"display_device_info":true,"debug":3,"sending_intervall_ms":145000,"time_for_wifi_config":600000,"senseboxid":"","send2custom":false,"host_custom":"192.168.234.1","url_custom":"/data.php","port_custom":80,"user_custom":"","pwd_custom":"","ssl_custom":false,"send2influx":false,"host_influx":"influx.server","url_influx":"/write?db=sensorcommunity","port_influx":8086,"user_influx":"","pwd_influx":"","measurement_name_influx":"feinstaub","ssl_influx":false}'
         self.configjson = json.loads(configstring)
         ssid = self.wifiSSID.text()
         pw = self.wifiPW.text()
         pw_empty = self.wifiPW_empty.isChecked()
+        self.configjson['lat_gps'] = self.GPSlat.text()
+        self.configjson['lon_gps'] = self.GPSlon.text()
         apssid = self.customName.text()
-        sensor1 = self.sensorsList[self.sensor1Box.currentIndex()]
-        sensor2 = self.sensorsList[self.sensor2Box.currentIndex()]
-        language = self.languagesList[self.languageBox.currentIndex()]
+        # sensor1 = self.sensorsList[self.sensor1Box.currentIndex()]
+        # sensor2 = self.sensorsList[self.sensor2Box.currentIndex()]
+        # language = self.languagesList[self.languageBox.currentIndex()]
 
-        if language not in self.languagesList:
-            self.statusbar.showMessage(self.tr("Invalid language."))
-            return
+        # if language not in self.languagesList:
+        #     self.statusbar.showMessage(self.tr("Invalid language."))
+        #     return
 
         if not ssid:
             self.statusbar.showMessage(self.tr("No SSID typed."))
@@ -380,25 +402,25 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         if pw_empty:
             pw = ""
 
-        if sensor1 == sensor2:
-            self.statusbar.showMessage(self.tr("2 times the same sensor."))
-            return
+        # if sensor1 == sensor2:
+        #     self.statusbar.showMessage(self.tr("2 times the same sensor."))
+        #     return
 
         if not apssid:
-            # self.configjson['fs_ssid'] = "airRohr-" + str(self.sensorID)
-            self.configjson['fs_ssid'] = ""
-            # print(self.configjson['fs_ssid'])
+            self.configjson['fs_ssid'] = "RobonomicsSensor-" + str(self.sensorID)
+            # self.configjson['fs_ssid'] = ""
+            print(self.configjson['fs_ssid'])
         else:
             self.configjson['fs_ssid'] = apssid + "-" + str(self.sensorID)
             self.customNameSave = apssid
             print(self.configjson['fs_ssid'])        
 
-        self.switcher(sensor1)
-        self.switcher(sensor2)
+        # self.switcher(sensor1)
+        # self.switcher(sensor2)
 
         self.configjson['wlanssid'] = ssid
         self.configjson['wlanpwd'] = pw
-        self.configjson['current_lang'] = language
+        # self.configjson['current_lang'] = language
         
 
         jsonTest = json.dumps(self.configjson)
