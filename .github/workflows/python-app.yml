@@ -44,7 +44,7 @@ jobs:
         make deps dist && ls dist/
     - uses: actions/upload-artifact@v2
       with:
-        name: airrohr-flasher-ubuntu
+        name: airrohr-flasher-ubuntu18
         path: dist/airrohr-flasher
         
   buildUbuntuLatest:
