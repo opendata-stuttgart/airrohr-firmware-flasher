@@ -135,9 +135,9 @@ Now your device is flashed, you may now
 
 ### Linux
 
-Currently Linux builds require *Python 3.6* (but 3.7 seems to work fine as
+Currently Linux builds require *Python 3.6* (but 3.7 and 3.9 seems to work fine as
 well), GNU make and Qt Linguist tools. Following packages should suffice on
-Ubuntu (tested on Ubuntu 18.04):
+Ubuntu (tested on Ubuntu 18.04 and Ubuntu 20.04):
 
     sudo apt install qttools5-dev-tools pyqt5-dev-tools qt5-default python3-pip python3.6 make
 

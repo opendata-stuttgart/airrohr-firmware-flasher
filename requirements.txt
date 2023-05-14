@@ -11,8 +11,8 @@ netifaces==0.10.7
 pefile==2018.8.8
 pyaes==1.6.1
 pyinstaller==3.6
-pyqt5-sip==4.19.19
-pyqt5==5.11.2
+pyqt5-sip==12.12.1
+pyqt5==5.15.9
 pyserial==3.4
 requests==2.20.0
 urllib3==1.24.2
