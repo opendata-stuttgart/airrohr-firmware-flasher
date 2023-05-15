@@ -6,8 +6,9 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-20.04, macos10.6]
+        os: [ubuntu-20.04, macos10.15]
         python-version: ["3.9"]
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
