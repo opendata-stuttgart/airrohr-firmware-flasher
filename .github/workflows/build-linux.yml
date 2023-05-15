@@ -4,10 +4,10 @@ on: [push, pull_request, fork]
 
 jobs:
   build:
-    runs-on: [ubuntu-18.04, ubuntu-20.04]
+    runs-on: [ubuntu-20.04]
     strategy:
       matrix:
-        python-version: ["3.6", "3.7", "3.8", "3.9", ]
+        python-version: ["3.9"]
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Install Ubuntu Packages
