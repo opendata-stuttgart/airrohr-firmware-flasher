@@ -1,0 +1,21 @@
+name: Build Linux Binaries
+
+on: [push, pull_request, fork]
+
+jobs:
+  build:
+    runs-on: [ubuntu-18.04, ubuntu-20.04]
+
+    steps:
+      - name: Install Ubuntu Packages
+        run: sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa && sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v4
+        with:
+          python-version: ["3.6", "3.7", "3.8", "3.9"]
+          architecture: 'x64'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Run build script
+        run: make deps dist
+        shell: bash
