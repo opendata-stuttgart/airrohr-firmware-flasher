@@ -8,9 +8,73 @@ spiffsgen.py added and kindly modified by @DeeKey
 ![Modified GUI](images/modified_GUI2.png)
 
 config.json example:
-
-`{"SOFTWARE_VERSION":"NRZ-2020-133","current_lang":"FR","wlanssid":"Livebox-7E78","wlanpwd":"i0c_YSNS","www_username":"admin","www_password":"","fs_ssid":"airRohr-2509507","fs_pwd":"","www_basicauth_enabled":false,"dht_read":false,"htu21d_read":false,"ppd_read":false,"sds_read":false,"pms_read":true,"hpm_read":false,"npm_read":false,"sps30_read":false,"bmp_read":false,"bmx280_read":true,"sht3x_read":false,"ds18b20_read":false,"dnms_read":false,"dnms_correction":"0.0","temp_correction":"0.0","gps_read":false,"send2dusti":true,"ssl_dusti":false,"send2madavi":true,"ssl_madavi":false,"send2sensemap":false,"send2fsapp":false,"send2aircms":false,"send2csv":false,"auto_update":true,"use_beta":false,"has_display":false,"has_sh1106":false,"has_flipped_display":false,"has_lcd1602":false,"has_lcd1602_27":true,"has_lcd2004":false,"has_lcd2004_27":false,"display_wifi_info":true,"display_device_info":true,"debug":3,"sending_intervall_ms":145000,"time_for_wifi_config":600000,"senseboxid":"","send2custom":false,"host_custom":"192.168.234.1","url_custom":"/data.php","port_custom":80,"user_custom":"","pwd_custom":"","ssl_custom":false,"send2influx":false,"host_influx":"influx.server","url_influx":"/write?db=sensorcommunity","port_influx":8086,"user_influx":"","pwd_influx":"","measurement_name_influx":"feinstaub","ssl_influx":false}`
-
+```json
+{
+   "SOFTWARE_VERSION":"NRZ-2020-133",
+   "current_lang":"FR",
+   "wlanssid":"Livebox-7E78",
+   "wlanpwd":"i0c_YSNS",
+   "www_username":"admin",
+   "www_password":"",
+   "fs_ssid":"airRohr-2509507",
+   "fs_pwd":"",
+   "www_basicauth_enabled":false,
+   "dht_read":false,
+   "htu21d_read":false,
+   "ppd_read":false,
+   "sds_read":false,
+   "pms_read":true,
+   "hpm_read":false,
+   "npm_read":false,
+   "sps30_read":false,
+   "bmp_read":false,
+   "bmx280_read":true,
+   "sht3x_read":false,
+   "ds18b20_read":false,
+   "dnms_read":false,
+   "dnms_correction":"0.0",
+   "temp_correction":"0.0",
+   "gps_read":false,
+   "send2dusti":true,
+   "ssl_dusti":false,
+   "send2madavi":true,
+   "ssl_madavi":false,
+   "send2sensemap":false,
+   "send2fsapp":false,
+   "send2aircms":false,
+   "send2csv":false,
+   "auto_update":true,
+   "use_beta":false,
+   "has_display":false,
+   "has_sh1106":false,
+   "has_flipped_display":false,
+   "has_lcd1602":false,
+   "has_lcd1602_27":true,
+   "has_lcd2004":false,
+   "has_lcd2004_27":false,
+   "display_wifi_info":true,
+   "display_device_info":true,
+   "debug":3,
+   "sending_intervall_ms":145000,
+   "time_for_wifi_config":600000,
+   "senseboxid":"",
+   "send2custom":false,
+   "host_custom":"192.168.234.1",
+   "url_custom":"/data.php",
+   "port_custom":80,
+   "user_custom":"",
+   "pwd_custom":"",
+   "ssl_custom":false,
+   "send2influx":false,
+   "host_influx":"influx.server",
+   "url_influx":"/write?db=sensorcommunity",
+   "port_influx":8086,
+   "user_influx":"",
+   "pwd_influx":"",
+   "measurement_name_influx":"feinstaub",
+   "ssl_influx":false
+}
+```
 ## Binary builds and downloads
 
 Our main target is having working prebuilt binaries for users to simply download and run, to avoid all the setup below.
