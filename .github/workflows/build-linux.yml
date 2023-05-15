@@ -1,4 +1,4 @@
-name: Build Linux Binaries
+name: Airrohr Firmware Flasher CI
 
 on: [push, pull_request, fork]
 
@@ -6,7 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-20.04]
+        os: [ubuntu-18.04, ubuntu-20.04]
         python-version: ["3.9"]
     runs-on: ${{ matrix.os }}
     steps:
@@ -26,5 +26,5 @@ jobs:
       - name: Archive built binaries
         uses: actions/upload-artifact@v3
         with:
-          name: airrohr-flasher-dist-${{ matrix.os }}-${{ matrix.python-version }}
+          name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
           path: dist/airrohr-flasher
