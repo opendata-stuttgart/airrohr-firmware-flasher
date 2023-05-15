@@ -6,12 +6,13 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+        os: [ubuntu-20.04, macos10.6]
         python-version: ["3.9"]
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Install Ubuntu Packages
+        if: runner.os == 'Linux'
         run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
@@ -20,8 +21,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      - name: Run build script
+      - name: Run build script (Linux)
+        if: runner.os == 'Linux'
         run: make deps dist
+        shell: bash
+      - name: Run build script (OS X)
+        if: runner.os == 'macOS'
+        run: make deps dmg
         shell: bash
       - name: Archive built binaries
         uses: actions/upload-artifact@v3
