@@ -33,12 +33,14 @@ jobs:
         run: make deps
       - name: Install Additional OS X build deps
         if: runner.os == 'macOS'
-        run: pip install dmgbuild
+        run: pip install dmgbuild && pip install biplist
       - name: Add Qt5 to path in OS X
         if: runner.os == 'macOS'
         run: export PATH="/usr/local/opt/qt@5/bin/Users/runner/.local/bin:$PATH"
       - name: Display Path
         run: echo $PATH
+      - name: Display Pip packages
+        run: pip freeze
 #      - name: Test for pyuic5 command full path
 #        if: runner.os == 'macOS'
 #        run: /Users/runner/.local/bin/pyuic5 --version
