@@ -13,12 +13,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - name: Display OS X qt@5 brew package info
-        if: runner.os == 'macOS'
-        run: brew info qt@5
       - name: Install qt5 OS X Packages
         if: runner.os == 'macOS'
-        run: brew install qt@5
+        run: brew install qt@5 && brew install pyqt@5
       - name: Install qt5 Ubuntu Packages
         if: runner.os == 'Linux'
         run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
@@ -32,6 +29,8 @@ jobs:
         run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:$PATH"
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
+      - name: Test for pyuic5 command
+        run: pyuic5 --version
       - name: Run build script (Linux)
         if: runner.os == 'Linux'
         run: make deps dist
