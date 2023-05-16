@@ -27,7 +27,7 @@ jobs:
           cache: 'pip'
       - name: Add Qt5 to pythonpath in OS X
         if: runner.os == 'macOS'
-        run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:$PATH"
+        run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH"
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Display pythonpath
