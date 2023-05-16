@@ -1,4 +1,4 @@
-name: Airrohr Firmware Flasher CI
+name: Build Airrohr Firmware Flasher CI
 
 on: [push, pull_request, fork]
 
@@ -15,7 +15,7 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Install qt5 OS X Packages
         if: runner.os == 'macOS'
-        run: brew install qt@5 # && brew install pyqt@5
+        run: brew install qt@5
       - name: Install qt5 Ubuntu Packages
         if: runner.os == 'Linux'
         run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
@@ -33,7 +33,7 @@ jobs:
         run: make deps
       - name: Install Additional OS X build deps
         if: runner.os == 'macOS'
-        run: pip install dmgbuild && pip install biplist
+        run: pip install dmgbuild==1.6.1
       - name: Add Qt5 to path in OS X
         if: runner.os == 'macOS'
         run: export PATH="/usr/local/opt/qt@5/bin/Users/runner/.local/bin:$PATH"
