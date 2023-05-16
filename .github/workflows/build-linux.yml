@@ -27,8 +27,6 @@ jobs:
           #cache: 'pip'
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      - name: Display Path
-        run: echo $PATH
       - name: Display python root dir
         run: echo $Python3_ROOT_DIR
       - name: Install dependencies
@@ -36,6 +34,8 @@ jobs:
       - name: Add Qt5 to path in OS X
         if: runner.os == 'macOS'
         run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH"
+      - name: Display Path
+        run: echo $PATH
       - name: Test for pyuic5 command full path
         run: /Users/runner/.local/bin/pyuic5 --version
       - name: Test for pyuic5 command
