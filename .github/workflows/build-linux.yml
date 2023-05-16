@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: make deps
       - name: Test for pyuic5 command full path
-        run: Python3_ROOT_DIR/bin/pyuic5
+        run: $Python3_ROOT_DIR/bin/pyuic5
       - name: Test for pyuic5 command
         run: pyuic5 --version
       - name: Run build script (Linux)
