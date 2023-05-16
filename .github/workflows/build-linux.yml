@@ -25,7 +25,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           #cache: 'pip'
-      - name: Add bin path in OS X
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Display Path
