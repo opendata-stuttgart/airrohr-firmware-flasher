@@ -6,8 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        #  [ubuntu-20.04, macos-latest]
-        os: [ubuntu-20.04, ubuntu-22.04, macos-latest]
+        os: [ubuntu-20.04, ubuntu-22.04, macos-latest, windows-latest]
         python-version: ["3.9"]
       fail-fast: false
     runs-on: ${{ matrix.os }}
@@ -24,7 +23,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          #cache: 'pip'
+          cache: 'pip'
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Display python root dir
@@ -34,19 +33,10 @@ jobs:
       - name: Install Additional OS X build deps
         if: runner.os == 'macOS'
         run: pip install dmgbuild==1.6.1
-      - name: Add Qt5 to path in OS X
-        if: runner.os == 'macOS'
-        run: export PATH="/usr/local/opt/qt@5/bin/Users/runner/.local/bin:$PATH"
       - name: Display Path
         run: echo $PATH
       - name: Display Pip packages
         run: pip freeze
-#      - name: Test for pyuic5 command full path
-#        if: runner.os == 'macOS'
-#        run: /Users/runner/.local/bin/pyuic5 --version
-#      - name: Test for lrelease command full path
-#        if: runner.os == 'macOS'
-#        run: /usr/local/opt/qt@5/bin/lrelease -version
       - name: Test for pyuic5 command
         run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && pyuic5 --version
       - name: Test for lrelease command
