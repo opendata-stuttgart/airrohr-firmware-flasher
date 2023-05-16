@@ -31,9 +31,12 @@ jobs:
         run: echo $Python3_ROOT_DIR
       - name: Install dependencies
         run: make deps
+      - name: Install Additional OS X build deps
+        if: runner.os == 'macOS'
+        run: pip install dmgbuild
       - name: Add Qt5 to path in OS X
         if: runner.os == 'macOS'
-        run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH"
+        run: export PATH="/usr/local/opt/qt@5/bin/Users/runner/.local/bin:$PATH"
       - name: Display Path
         run: echo $PATH
 #      - name: Test for pyuic5 command full path

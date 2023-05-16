@@ -1,7 +1,7 @@
 .ropeproject
 *.py[oc]
 *.swp
-
+.idea/**
 _buildid.py
 
 build/
