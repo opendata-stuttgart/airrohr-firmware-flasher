@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import os.path
+import sys
 
 # Before Python 3.4, use biplist; afterwards, use plistlib
 # Fix based on this issue of dmgbuild,
