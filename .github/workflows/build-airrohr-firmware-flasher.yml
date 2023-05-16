@@ -36,10 +36,12 @@ jobs:
         run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH"
       - name: Display Path
         run: echo $PATH
-      - name: Test for pyuic5 command full path
-        run: /Users/runner/.local/bin/pyuic5 --version
-      - name: Test for lrelease command full path
-        run: /usr/local/opt/qt@5/bin/lrelease -version
+#      - name: Test for pyuic5 command full path
+#        if: runner.os == 'macOS'
+#        run: /Users/runner/.local/bin/pyuic5 --version
+#      - name: Test for lrelease command full path
+#        if: runner.os == 'macOS'
+#        run: /usr/local/opt/qt@5/bin/lrelease -version
       - name: Test for pyuic5 command
         run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && pyuic5 --version
       - name: Test for lrelease command
