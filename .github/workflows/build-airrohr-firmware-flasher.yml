@@ -46,7 +46,7 @@ jobs:
         shell: bash
       - name: Run build script (OS X)
         if: runner.os == 'macOS'
-        run: make dmg
+        run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH" && make dmg
         shell: bash
       - name: Archive built binaries
         uses: actions/upload-artifact@v3
