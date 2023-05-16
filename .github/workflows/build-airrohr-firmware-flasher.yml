@@ -19,9 +19,10 @@ jobs:
         if: runner.os == 'Linux'
         run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
       - name: Install qt5 on Windows
+        if: runner.os == 'Windows'
         uses: jurplel/install-qt-action@v3
         with:
-          version: '5.15.8'
+          version: '5.15.3'
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
