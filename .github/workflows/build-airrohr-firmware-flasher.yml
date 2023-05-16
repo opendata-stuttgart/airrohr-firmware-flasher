@@ -23,6 +23,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: '5.15.2'
+          setup-python: 'false'
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
@@ -56,8 +57,15 @@ jobs:
         if: runner.os == 'macOS'
         run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && make dmg
         shell: bash
-      - name: Archive built binaries
+      - name: Archive built binaries (Linux and OS X)
+        if: runner.os != 'Windows'
         uses: actions/upload-artifact@v3
         with:
           name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
           path: dist/airrohr-flasher
+      - name: Archive built binaries (Windows)
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v3
+        with:
+          name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
+          path: dist/airrohr-flasher.exe
