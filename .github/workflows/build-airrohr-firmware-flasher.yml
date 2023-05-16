@@ -18,6 +18,10 @@ jobs:
       - name: Install qt5 Ubuntu Packages
         if: runner.os == 'Linux'
         run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
+      - name: Install qt5 on Windows
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '5.15.8'
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
@@ -38,11 +42,13 @@ jobs:
       - name: Display Pip packages
         run: pip freeze
       - name: Test for pyuic5 command
+        if: runner.os == 'macOS'
         run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && pyuic5 --version
       - name: Test for lrelease command
+        if: runner.os == 'macOS'
         run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && lrelease -version
-      - name: Run build script (Linux)
-        if: runner.os == 'Linux'
+      - name: Run build script (Linux or Windows)
+        if: runner.os != 'macOS'
         run: make dist
         shell: bash
       - name: Run build script (OS X)
