@@ -37,7 +37,9 @@ jobs:
       - name: Display Path
         run: echo $PATH
       - name: Test for pyuic5 command full path
-        run: /Users/runner/.local/bin/pyuic5 --version
+        run: /Users/runner/.local/bin/pyuic5 -version
+      - name: Test for lrelease command full path
+        run: /Users/runner/.local/bin/lrelease --version
       - name: Test for pyuic5 command
         run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH" && pyuic5 --version
       - name: Run build script (Linux)
