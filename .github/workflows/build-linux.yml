@@ -29,15 +29,17 @@ jobs:
         run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:$PATH"
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
+      - name: Install dependencies
+        run: make deps
       - name: Test for pyuic5 command
         run: pyuic5 --version
       - name: Run build script (Linux)
         if: runner.os == 'Linux'
-        run: make deps dist
+        run: make dist
         shell: bash
       - name: Run build script (OS X)
         if: runner.os == 'macOS'
-        run: make deps dmg
+        run: make dmg
         shell: bash
       - name: Archive built binaries
         uses: actions/upload-artifact@v3
