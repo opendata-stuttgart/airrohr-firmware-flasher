@@ -12,7 +12,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - name: Install Ubuntu Packages
+      - name: Install qt5 OS X Packages
+        if: runner.os == 'macOS'
+        run: brew install qt@5
+      - name: Install qt5 Ubuntu Packages
         if: runner.os == 'Linux'
         run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
       - uses: actions/checkout@v3
