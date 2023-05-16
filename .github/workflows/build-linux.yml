@@ -6,7 +6,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-20.04, macos-latest]
+        #  [ubuntu-20.04, macos-latest]
+        os: [macos-latest]
         python-version: ["3.9"]
       fail-fast: false
     runs-on: ${{ matrix.os }}
@@ -17,7 +18,7 @@ jobs:
         run: brew info qt@5
       - name: Install qt5 OS X Packages
         if: runner.os == 'macOS'
-        run: brew install qt@5 &&
+        run: brew install qt@5
       - name: Install qt5 Ubuntu Packages
         if: runner.os == 'Linux'
         run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
