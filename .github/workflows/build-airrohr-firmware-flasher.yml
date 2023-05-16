@@ -42,6 +42,7 @@ jobs:
         run: /Users/runner/.local/bin/lrelease -version
       - name: Test for pyuic5 command
         run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH" && pyuic5 --version
+
       - name: Run build script (Linux)
         if: runner.os == 'Linux'
         run: make dist
@@ -49,7 +50,7 @@ jobs:
       - name: Run build script (OS X)
         if: runner.os == 'macOS'
         run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH" && make dmg
-        shell: bash
+        
       - name: Archive built binaries
         uses: actions/upload-artifact@v3
         with:
