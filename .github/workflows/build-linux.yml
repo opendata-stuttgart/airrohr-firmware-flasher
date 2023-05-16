@@ -24,18 +24,21 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip'
-      - name: Add Qt5 to pythonpath in OS X
-        if: runner.os == 'macOS'
-        run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH"
+          #cache: 'pip'
+      - name: Add bin path in OS X
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-      - name: Display pythonpath
+      - name: Display Path
         run: echo $PATH
       - name: Display python root dir
         run: echo $Python3_ROOT_DIR
       - name: Install dependencies
         run: make deps
+      - name: Add Qt5 to path in OS X
+        if: runner.os == 'macOS'
+        run: export PATH="$HOME/Qt/5.15.8/clang_64/bin:/Users/runner/.local/bin:$PATH"
+      - name: Test for pyuic5 command full path
+        run: /Users/runner/.local/bin/pyuic5 --version
       - name: Test for pyuic5 command
         run: pyuic5 --version
       - name: Run build script (Linux)
