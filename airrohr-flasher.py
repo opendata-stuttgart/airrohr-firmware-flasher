@@ -427,7 +427,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             args.extend(["spiffsgen.py",
                      "--page-size", "256",
                      "--block-size", "8192",
-                     "--meta-len=0", "0x100000"])
+                     "--meta-len=0", "0x2FA000"])
 
             args.append("--no-magic-len")
             args.append("--aligned-obj-ix-tables")
