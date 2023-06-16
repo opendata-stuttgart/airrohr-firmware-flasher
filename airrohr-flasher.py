@@ -388,13 +388,11 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             return
 
         if not apssid:
-            # self.configjson['fs_ssid'] = "airRohr-" + str(self.sensorID)
-            self.configjson['fs_ssid'] = ""
-            # print(self.configjson['fs_ssid'])
-        else:
-            self.configjson['fs_ssid'] = apssid + "-" + str(self.sensorID)
-            self.customNameSave = apssid
-            print(self.configjson['fs_ssid'])        
+            apssid = "airRohr"
+
+        self.configjson['fs_ssid'] = apssid + "-" + str(self.sensorID)
+        self.customNameSave = apssid
+        print(self.configjson['fs_ssid'])
 
         self.switcher(sensor1)
         self.switcher(sensor2)
