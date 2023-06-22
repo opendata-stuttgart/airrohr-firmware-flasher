@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -* encoding: utf-8 *-
 
+from distutils.command.config import config
 import sys
 import os.path
 import os
@@ -13,6 +14,7 @@ import json
 
 import requests
 from esptool import ESPLoader, erase_flash, write_flash
+import serial
 
 import airrohrFlasher
 from airrohrFlasher.qtvariant import QtGui, QtCore, QtWidgets
@@ -95,23 +97,25 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         print(self.cachedirjson.name)
         print(self.cachedirspiffs.name)
 
-        # self.sensorsList = ["SDS011", "HTU21D", "Geiger Counter", "CCS811", "CCS811_5B" "SPS30", "BME280", "BMP180", "BMP280", "DHT22", "DNMS (noise)", "None"]
+        self.sensorsList = ["SDS011", "HTU21D", "Geiger Counter", "CCS811", "CCS811_5B" "SPS30", "BME280", "BMP180", "BMP280", "DHT22", "DNMS (noise)", "None"]
         # self.languagesList = ["EN","RU"]
-        # self.populate_sensors1(self.sensorsList)
-        # self.populate_sensors2(self.sensorsList)
+        self.populate_sensors1(self.sensorsList)
+        self.populate_sensors2(self.sensorsList)
         # self.populate_languages(self.languagesList)
 
-        # self.sensor1Box.setCurrentIndex(0)
-        # self.sensor2Box.setCurrentIndex(1)
+        self.sensor1Box.setCurrentIndex(0)
+        self.sensor2Box.setCurrentIndex(1)
         # self.languageBox.setCurrentIndex(0)
 
         self.customName.setPlaceholderText("Default = RobonomicsSensor")
 
-        self.wifiSSID.setPlaceholderText("Please double check...")
-        self.wifiPW.setPlaceholderText("Please double check...")
+        # self.wifiSSID.setPlaceholderText("Please double check...")
+        # self.wifiPW.setPlaceholderText("Please double check...")
 
-        self.GPSlat.setPlaceholderText("Latitude of your sensor")
-        self.GPSlon.setPlaceholderText("Longitude of your sensor")
+        # self.GPSlat.setPlaceholderText("Latitude of your sensor")
+        # self.GPSlon.setPlaceholderText("Longitude of your sensor")
+
+        self.DonatedBy.setPlaceholderText("Donated by")
 
         self.configjson = json.loads('{}')
         self.sensorID = 0
@@ -357,7 +361,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
             self.configjson['dnms_read'] = True
         elif value == "HTU21D":
             self.configjson['htu21d_read'] = True
-        elif value == "Geiger Counter":
+        elif value == "Geiger_Counter":
             self.configjson['gc_read'] = True
         elif value == "CCS811":
             self.configjson['ccs811_read'] = True
@@ -375,32 +379,43 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         
         device = self.boardBox.currentData(ROLE_DEVICE)
 
-        configstring = '{"SOFTWARE_VERSION":"flashingtool","current_lang":"","wlanssid":"","wlanpwd":"","www_username":"admin","www_password":"","fs_ssid":"","fs_pwd":"","www_basicauth_enabled":false,"dht_read":false,"htu21d_read":true,"ppd_read":false,"sds_read":true,"gc_read":false,"ccs811_read":false,"ccs811_27_read":false,"file_write":false,"pms_read":false,"hpm_read":false,"npm_read":false,"sps30_read":false,"bmp_read":false,"bmx280_read":false,"sht3x_read":false,"ds18b20_read":false,"dnms_read":false,"dnms_correction":"0.0","temp_correction":"0.0","lat_gps":"0.0","lon_gps":"0.0","gps_read":false,"send2dusti":true,"ssl_dusti":false,"send2madavi":true,"ssl_madavi":false,"send2robonomics":true,"send2sensemap":false,"send2fsapp":false,"send2aircms":false,"send2csv":false,"auto_update":true,"use_beta":false,"has_display":false,"has_sh1106":false,"has_flipped_display":false,"has_lcd1602":false,"has_lcd1602_27":false,"has_lcd2004":false,"has_lcd2004_27":false,"display_wifi_info":true,"display_device_info":true,"debug":3,"sending_intervall_ms":145000,"time_for_wifi_config":600000,"senseboxid":"","send2custom":false,"host_custom":"192.168.234.1","url_custom":"/data.php","port_custom":80,"user_custom":"","pwd_custom":"","ssl_custom":false,"send2influx":false,"host_influx":"influx.server","url_influx":"/write?db=sensorcommunity","port_influx":8086,"user_influx":"","pwd_influx":"","measurement_name_influx":"feinstaub","ssl_influx":false}'
+        configstring = '{"SOFTWARE_VERSION":"flashingtool","current_lang":"","wlanssid":"","wlanpwd":"","www_username":"admin","www_password":"","fs_ssid":"","fs_pwd":"","www_basicauth_enabled":false,"dht_read":false,"htu21d_read":true,"ppd_read":false,"sds_read":true,"gc_read":false,"ccs811_read":false,"ccs811_27_read":false,"file_write":false,"pms_read":false,"hpm_read":false,"npm_read":false,"sps30_read":false,"bmp_read":false,"bmx280_read":false,"sht3x_read":false,"ds18b20_read":false,"dnms_read":false,"dnms_correction":"0.0","lat_gps":"0.0","lon_gps":"0.0","temp_correction":"0.0","gps_read":false,"send2dusti":true,"ssl_dusti":false,"send2madavi":true,"ssl_madavi":false,"send2robonomics":true,"send2sensemap":false,"send2fsapp":false,"send2aircms":false,"send2csv":false,"auto_update":false,"use_beta":false,"has_display":false,"has_sh1106":false,"has_flipped_display":false,"has_lcd1602":false,"has_lcd1602_27":false,"has_lcd2004":false,"has_lcd2004_27":false,"display_wifi_info":true,"display_device_info":true,"debug":3,"sending_intervall_ms":145000,"time_for_wifi_config":600000,"senseboxid":"","send2custom":false,"host_custom":"192.168.234.1","url_custom":"/data.php","port_custom":80,"user_custom":"","pwd_custom":"","ssl_custom":false,"send2influx":false,"host_influx":"influx.server","url_influx":"/write?db=sensorcommunity","port_influx":8086,"user_influx":"","pwd_influx":"","measurement_name_influx":"feinstaub","ssl_influx":false,"donated_by":"Robonomics"}'
         self.configjson = json.loads(configstring)
-        ssid = self.wifiSSID.text()
-        pw = self.wifiPW.text()
-        pw_empty = self.wifiPW_empty.isChecked()
-        self.configjson['lat_gps'] = self.GPSlat.text()
-        self.configjson['lon_gps'] = self.GPSlon.text()
+        # ssid = self.wifiSSID.text()
+        # pw = self.wifiPW.text()
+        # pw_empty = self.wifiPW_empty.isChecked()
+        # self.configjson['lat_gps'] = self.GPSlat.text()
+        # self.configjson['lon_gps'] = self.GPSlon.text()
+        self.configjson['donated_by'] = self.DonatedBy.text()
         apssid = self.customName.text()
-        # sensor1 = self.sensorsList[self.sensor1Box.currentIndex()]
-        # sensor2 = self.sensorsList[self.sensor2Box.currentIndex()]
+        self.configjson['sds_read'] = self.check_SDS011.isChecked()
+        self.configjson['dht_read'] = self.check_DHT22.isChecked()
+        self.configjson['ppd_read'] = self.check_PPD42.isChecked()
+        self.configjson['pms_read'] = self.check_PMSx003.isChecked()
+        self.configjson['sps30_read'] = self.check_SPS30.isChecked()
+        self.configjson['bmp_read'] = self.check_BMP.isChecked()
+        self.configjson['bmx280_read'] = self.check_BME280.isChecked()
+        self.configjson['sht3x_read'] = self.check_SHT3X.isChecked()
+        self.configjson['htu21d_read'] = self.check_HTU21D.isChecked()
+        self.configjson['gc_read'] = self.check_Geiger_Counter.isChecked()
+        self.configjson['ccs811_read'] = self.check_CCS811.isChecked()
+        self.configjson['ccs811_27_read'] = self.check_CCS811_5B.isChecked()
         # language = self.languagesList[self.languageBox.currentIndex()]
 
         # if language not in self.languagesList:
         #     self.statusbar.showMessage(self.tr("Invalid language."))
         #     return
 
-        if not ssid:
-            self.statusbar.showMessage(self.tr("No SSID typed."))
-            return
+        # if not ssid:
+        #     self.statusbar.showMessage(self.tr("No SSID typed."))
+        #     return
 
-        if not pw and not pw_empty:
-            self.statusbar.showMessage(self.tr("No password typed."))
-            return
+        # if not pw and not pw_empty:
+        #     self.statusbar.showMessage(self.tr("No password typed."))
+        #     return
 
-        if pw_empty:
-            pw = ""
+        # if pw_empty:
+        #     pw = ""
 
         # if sensor1 == sensor2:
         #     self.statusbar.showMessage(self.tr("2 times the same sensor."))
@@ -413,13 +428,24 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
         else:
             self.configjson['fs_ssid'] = apssid + "-" + str(self.sensorID)
             self.customNameSave = apssid
-            print(self.configjson['fs_ssid'])        
+            print(self.configjson['fs_ssid'])  
+
+        # if not pw and not pw_empty:
+        #     self.statusbar.showMessage(self.tr("No password typed."))
+        #     return
+
+        # if pw_empty:
+        #     pw = ""nfigjson['fs_ssid'])
+        # else:
+        #     self.configjson['fs_ssid'] = apssid + "-" + str(self.sensorID)
+        #     self.customNameSave = apssid
+        #     print(self.configjson['fs_ssid'])        
 
         # self.switcher(sensor1)
         # self.switcher(sensor2)
 
-        self.configjson['wlanssid'] = ssid
-        self.configjson['wlanpwd'] = pw
+        # self.configjson['wlanssid'] = ssid
+        # self.configjson['wlanpwd'] = pw
         # self.configjson['current_lang'] = language
         
 
@@ -473,6 +499,18 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     @QuickThread.wrap
     def write_config(self, progress, device, path, baudrate=460800):
 
+        progress.emit(self.tr('Waiting for board response...'), 0)
+
+        print(f"device: {device}, path: {path}")
+        configured = False
+        ser = serial.Serial(device, baudrate=115200)
+        while not configured:
+            line = str(ser.readline())
+            line = line[2:]
+            print(f"serial: {line}")
+            if line[0] != "." and line.split()[0] != "airRohr:" and line.split()[0] != "mounting":
+                configured = True
+
         progress.emit(self.tr('Connecting...'), 0)
 
         init_baud = min(ESPLoader.ESP_ROM_BAUD, baudrate)
@@ -490,6 +528,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         address = 0x100000
         blocks = esp.flash_defl_begin(len(uncimagespiffs), len(imagespiffs), address)
+
 
         seq = 0
         written = 0
@@ -661,6 +700,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
                 time=t, sensor_id=esp.chip_id()), 100)
 
         esp.flash_finish(True)
+        print("Flash finished, reset")
 
     @QtCore.Slot()
     def on_expertModeBox_clicked(self):
