@@ -12,7 +12,7 @@ import logging
 import json
 
 import requests
-from esptool import ESPLoader, erase_flash, write_flash
+from esptool import ESPLoader, erase_flash, write_flash, NotSupportedError
 
 import airrohrFlasher
 from airrohrFlasher.qtvariant import QtGui, QtCore, QtWidgets
@@ -33,6 +33,17 @@ if getattr(sys, 'frozen', False):
     RESOURCES_PATH = sys._MEIPASS
 else:
     RESOURCES_PATH = os.path.dirname(os.path.realpath(__file__))
+
+
+def get_chip_id(esp):
+    """
+    A shim to fix firmware flashing for ESP-32
+    """
+    try:
+        return esp.chip_id()
+    except NotSupportedError:
+        return esp.read_mac()
+
 
 class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
     uploadProgress = QtCore.Signal([str, int])
@@ -493,7 +504,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         progress.emit(self.tr(
             'Finished in {time:.2f} seconds. Sensor ID: {sensor_id}').format(
-                time=t, sensor_id=esp.chip_id()), 100)
+                time=t, sensor_id=get_chip_id(esp)), 100)
 
         esp.flash_finish(True)
 
@@ -639,7 +650,7 @@ class MainWindow(QtWidgets.QMainWindow, mainwindow.Ui_MainWindow):
 
         progress.emit(self.tr(
             'Finished in {time:.2f} seconds. Sensor ID: {sensor_id}').format(
-                time=t, sensor_id=esp.chip_id()), 100)
+                time=t, sensor_id=get_chip_id(esp)), 100)
 
         esp.flash_finish(True)
 
