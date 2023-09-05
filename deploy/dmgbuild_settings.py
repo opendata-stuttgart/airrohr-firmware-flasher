@@ -1,8 +1,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import biplist
 import os.path
+import sys
+
+# Before Python 3.4, use biplist; afterwards, use plistlib
+# Fix based on this issue of dmgbuild,
+# see https://github.com/dmgbuild/dmgbuild/issues/35
+# for additional details.
+if sys.version_info < (3, 4):
+    import biplist
+
+    def read_plist(path):
+        return biplist.readPlist(path)
+else:
+    import plistlib
+
+    def read_plist(path):
+        with open(path, 'rb') as f:
+            return plistlib.load(f)
 
 #
 # Example settings file for dmgbuild
@@ -22,7 +38,7 @@ appname = os.path.basename(application)
 
 def icon_from_app(app_path):
     plist_path = os.path.join(app_path, 'Contents', 'Info.plist')
-    plist = biplist.readPlist(plist_path)
+    plist = read_plist(plist_path)
     icon_name = plist['CFBundleIconFile']
     icon_root,icon_ext = os.path.splitext(icon_name)
     if not icon_ext:

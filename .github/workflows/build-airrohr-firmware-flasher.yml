@@ -1,0 +1,77 @@
+name: Build Airrohr Firmware Flasher CI
+
+on: [push, pull_request, fork]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, ubuntu-22.04, macos-latest, windows-latest]
+        python-version: ["3.9"]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Install qt5 OS X Packages
+        if: runner.os == 'macOS'
+        run: brew install qt@5
+      - name: Install qt5 Ubuntu Packages
+        if: runner.os == 'Linux'
+        run: sudo apt-get update -qq && sudo apt-get install -qq qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev qttools5-dev-tools make
+      - name: Install qt5 on Windows
+        if: runner.os == 'Windows'
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '5.15.2'
+          setup-python: 'false'
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Display python root dir
+        run: echo $Python3_ROOT_DIR
+      - name: Install dependencies
+        run: make deps
+      - name: Install Additional OS X build deps
+        if: runner.os == 'macOS'
+        run: pip install dmgbuild==1.6.1
+      - name: Display Path
+        run: echo $PATH
+      - name: Display Pip packages
+        run: pip freeze
+      - name: Test for pyuic5 command
+        if: runner.os == 'macOS'
+        run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && pyuic5 --version
+      - name: Test for lrelease command
+        if: runner.os == 'macOS'
+        run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && lrelease -version
+      - name: Run build script (Linux or Windows)
+        if: runner.os != 'macOS'
+        run: make dist
+        shell: bash
+      - name: Run build script (OS X)
+        if: runner.os == 'macOS'
+        run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && make dmg
+        shell: bash
+      - name: Archive built binaries (Linux)
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v3
+        with:
+          name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
+          path: dist/airrohr-flasher
+      - name: Archive built binaries (OS X)
+        if: runner.os == 'macOS'
+        uses: actions/upload-artifact@v3
+        with:
+          name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
+          path: dist/airrohr-flasher.dmg
+      - name: Archive built binaries (Windows)
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v3
+        with:
+          name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
+          path: dist/airrohr-flasher.exe
