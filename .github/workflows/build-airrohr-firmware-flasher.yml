@@ -57,12 +57,18 @@ jobs:
         if: runner.os == 'macOS'
         run: export PATH="/usr/local/opt/qt@5/bin:/Users/runner/.local/bin:$PATH" && make dmg
         shell: bash
-      - name: Archive built binaries (Linux and OS X)
-        if: runner.os != 'Windows'
+      - name: Archive built binaries (Linux)
+        if: runner.os == 'Linux'
         uses: actions/upload-artifact@v3
         with:
           name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
           path: dist/airrohr-flasher
+      - name: Archive built binaries (OS X)
+        if: runner.os == 'macOS'
+        uses: actions/upload-artifact@v3
+        with:
+          name: airrohr-flasher-dist-${{ matrix.os }}-python${{ matrix.python-version }}
+          path: dist/airrohr-flasher.dmg
       - name: Archive built binaries (Windows)
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v3
