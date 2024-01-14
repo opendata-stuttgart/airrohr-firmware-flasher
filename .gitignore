@@ -3,7 +3,7 @@
 *.swp
 .idea/**
 _buildid.py
-
+.python-version
 build/
 dist/
 
